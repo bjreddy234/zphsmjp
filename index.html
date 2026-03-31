@@ -1,116 +1,125 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VIII Classes Reading Performance</title>
+<title>ZPHS Mujahidpur - Launching Soon</title>
 
 <style>
+
 body{
     margin:0;
+    height:100vh;
+    overflow:hidden;
     font-family:Arial, sans-serif;
-    text-align:center;
+    background:#001f3f;
     color:white;
-    background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364);
-    background-size:400% 400%;
-    animation:bg 8s infinite alternate;
 }
 
-@keyframes bg{
-    0%{background-position:left;}
-    100%{background-position:right;}
-}
-
-/* Marquee Heading */
-marquee{
-    font-size:28px;
+/* 🔶 BACKGROUND TEXT (UPPER POSITION) */
+.bg-text{
+    position:absolute;
+    top:30%;  /* moved upward */
+    left:50%;
+    transform:translate(-50%,-50%);
+    font-size:80px;
     font-weight:bold;
-    text-shadow:2px 2px 6px black;
-    margin-top:15px;
+    color:rgba(255, 204, 0, 0.15);
+    white-space:nowrap;
+    animation:bgMove 10s linear infinite alternate;
 }
 
+@keyframes bgMove{
+    0%{transform:translate(-40%,-50%);}
+    100%{transform:translate(-60%,-50%);}
+}
+
+/* 🔷 MAIN CONTENT (LOWER POSITION) */
 .container{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:40px;
-    margin-top:30px;
+    position:absolute;
+    top:60%;  /* pushed below */
+    left:50%;
+    transform:translate(-50%,-50%);
+    text-align:center;
 }
 
-.chart-box{
-    width:280px;
+/* MARQUEE */
+.marquee{
+    width:100%;
+    overflow:hidden;
+    white-space:nowrap;
 }
 
-.pie{
-    width:250px;
-    height:250px;
-    border-radius:50%;
-    margin:auto;
-    box-shadow:0 0 20px rgba(0,0,0,0.6);
-    animation:rotate 15s linear infinite;
-}
-
-@keyframes rotate{
-    from{transform:rotate(0deg);}
-    to{transform:rotate(360deg);}
-}
-
-/* VIII A */
-.pieA{
-    background: conic-gradient(
-        #00c6ff 0% 44%,
-        #ff4d4d 44% 100%
-    );
-}
-
-/* VIII B */
-.pieB{
-    background: conic-gradient(
-        #00ff99 0% 50%,
-        #ffcc00 50% 100%
-    );
-}
-
-/* Labels - Bigger & Bold */
-.labels{
-    margin-top:15px;
-    font-size:24px;
+.marquee span{
+    display:inline-block;
+    font-size:42px;
     font-weight:bold;
-    line-height:1.8;
-    text-shadow:2px 2px 5px black;
+    padding-left:100%;
+    animation:marquee 8s linear infinite alternate;
+    text-shadow:0 0 10px #fff, 0 0 20px #00ccff;
 }
 
-.labels span{
-    display:block;
+@keyframes marquee{
+    0%{transform:translateX(0);}
+    100%{transform:translateX(-100%);}
 }
+
+/* LAUNCH TEXT */
+.launch{
+    font-size:40px;
+    font-weight:bold;
+    color:#ffcc00;
+    margin-top:25px;
+    animation:blink 1.5s infinite;
+}
+
+@keyframes blink{
+    50%{opacity:0.4;}
+}
+
+/* MESSAGE */
+.msg{
+    margin-top:25px;
+    font-size:22px;
+    font-weight:bold;
+    line-height:1.5;
+}
+
+/* FOOTER */
+.footer{
+    position:absolute;
+    bottom:20px;
+    width:100%;
+    text-align:center;
+    font-size:16px;
+    opacity:0.8;
+}
+
 </style>
-
 </head>
 
 <body>
 
-<marquee behavior="alternate">📊 VIII CLASSES - READING PERFORMANCE 📊</marquee>
+<div class="bg-text">ZPHS MUJAHIDPUR</div>
 
 <div class="container">
 
-<div class="chart-box">
-    <h2>VIII A</h2>
-    <div class="pie pieA"></div>
-    <div class="labels">
-        <span>🔵 Telugu - 12/34</span>
-        <span>🔴 English - 15/34</span>
+    <div class="marquee">
+        <span>ZPHS MUJAHIDPUR</span>
     </div>
+
+    <div class="launch">Launching Shortly</div>
+
+    <div class="msg">
+        Our school website is under construction<br>
+        We’ll be live soon!
+    </div>
+
 </div>
 
-<div class="chart-box">
-    <h2>VIII B</h2>
-    <div class="pie pieB"></div>
-    <div class="labels">
-        <span>🟢 Telugu - 13/35</span>
-        <span>🟡 English - 13/35</span>
-    </div>
-</div>
-
+<div class="footer">
+    Regards,<br>
+    B. JANARDHAN REDDY<br>
+    GHM ZPHS Mujahidpur
 </div>
 
 </body>
