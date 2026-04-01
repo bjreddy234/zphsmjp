@@ -1,126 +1,18 @@
+```html
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZPHS Mujahidpur - Launching Soon</title>
+    <title>Redirecting...</title>
 
-<style>
+    <!-- Auto Redirect -->
+    <meta http-equiv="refresh" content="0; url=exam.html">
 
-body{
-    margin:0;
-    height:100vh;
-    overflow:hidden;
-    font-family:Arial, sans-serif;
-    background:#001f3f;
-    color:white;
-}
-
-/* 🔶 BACKGROUND TEXT (UPPER POSITION) */
-.bg-text{
-    position:absolute;
-    top:30%;  /* moved upward */
-    left:50%;
-    transform:translate(-50%,-50%);
-    font-size:80px;
-    font-weight:bold;
-    color:rgba(255, 204, 0, 0.15);
-    white-space:nowrap;
-    animation:bgMove 10s linear infinite alternate;
-}
-
-@keyframes bgMove{
-    0%{transform:translate(-40%,-50%);}
-    100%{transform:translate(-60%,-50%);}
-}
-
-/* 🔷 MAIN CONTENT (LOWER POSITION) */
-.container{
-    position:absolute;
-    top:60%;  /* pushed below */
-    left:50%;
-    transform:translate(-50%,-50%);
-    text-align:center;
-}
-
-/* MARQUEE */
-.marquee{
-    width:100%;
-    overflow:hidden;
-    white-space:nowrap;
-}
-
-.marquee span{
-    display:inline-block;
-    font-size:42px;
-    font-weight:bold;
-    padding-left:100%;
-    animation:marquee 8s linear infinite alternate;
-    text-shadow:0 0 10px #fff, 0 0 20px #00ccff;
-}
-
-@keyframes marquee{
-    0%{transform:translateX(0);}
-    100%{transform:translateX(-100%);}
-}
-
-/* LAUNCH TEXT */
-.launch{
-    font-size:40px;
-    font-weight:bold;
-    color:#ffcc00;
-    margin-top:25px;
-    animation:blink 1.5s infinite;
-}
-
-@keyframes blink{
-    50%{opacity:0.4;}
-}
-
-/* MESSAGE */
-.msg{
-    margin-top:25px;
-    font-size:22px;
-    font-weight:bold;
-    line-height:1.5;
-}
-
-/* FOOTER */
-.footer{
-    position:absolute;
-    bottom:20px;
-    width:100%;
-    text-align:center;
-    font-size:16px;
-    opacity:0.8;
-}
-
-</style>
 </head>
-
 <body>
 
-<div class="bg-text">ZPHS MUJAHIDPUR</div>
-
-<div class="container">
-
-    <div class="marquee">
-        <span>ZPHS MUJAHIDPUR</span>
-    </div>
-
-    <div class="launch">Launching Shortly</div>
-
-    <div class="msg">
-        Our school website is under construction<br>
-        We’ll be live soon!
-    </div>
-
-</div>
-
-<div class="footer">
-    Regards,<br>
-    B. JANARDHAN REDDY<br>
-    GHM ZPHS Mujahidpur
-</div>
+<!-- Backup (if auto redirect fails) -->
+<p>If not redirected, <a href="exam.html">Click here</a></p>
 
 </body>
 </html>
+```
