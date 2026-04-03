@@ -1,0 +1,183 @@
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SSC Exams Announcement</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background: linear-gradient(135deg,#eef2f3,#dfe9f3);
+}
+
+/* Slide Container */
+.slide{
+    width:95%;
+    max-width:900px;
+    margin:15px auto;
+    padding:15px;
+    background:#ffffff;
+    border-radius:12px;
+    box-shadow:0 0 12px rgba(0,0,0,0.2);
+    text-align:center;
+}
+
+/* ===== GLOW TEXT ===== */
+.glow-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:70px;
+}
+
+.moving-glow-text{
+    font-size:clamp(20px,5vw,34px);
+    font-weight:bold;
+    color:#ffffff;
+
+    text-shadow: 
+        0 0 5px #00e5ff,
+        0 0 10px #00e5ff,
+        0 0 20px #00e5ff,
+        0 0 40px #00bcd4;
+
+    animation: moveText 5s infinite alternate;
+}
+
+@keyframes moveText {
+    0% { transform: translateX(-30px); }
+    100% { transform: translateX(30px); }
+}
+
+/* Headings */
+h1{
+    font-size:clamp(18px,4vw,26px);
+    color:#002b5c;
+    margin:10px 0;
+}
+
+h2{
+    font-size:clamp(16px,4vw,22px);
+    color:#6a1b9a;
+    margin:10px 0;
+}
+
+/* TODAY'S EXAM BOX (NO MARQUEE) */
+.exam-box{
+    background:#0d47a1;
+    color:#ffffff;
+    padding:12px;
+    margin:12px 0;
+    font-weight:bold;
+    border-radius:6px;
+    font-size:clamp(14px,4vw,20px);
+}
+
+/* Highlight */
+.highlight{
+    background:#1565c0;
+    color:#fff;
+    padding:10px;
+    margin:10px 0;
+    font-weight:bold;
+    border-radius:5px;
+    font-size:clamp(14px,4vw,18px);
+}
+
+/* Notice */
+.notice{
+    color:#0d47a1;
+    font-weight:bold;
+    font-size:clamp(14px,4vw,18px);
+}
+
+/* List */
+.list{
+    text-align:left;
+    margin-top:10px;
+    color:#b71c1c;
+    font-weight:bold;
+    font-size:clamp(14px,4vw,18px);
+}
+
+/* Footer */
+.footer{
+    text-align:right;
+    margin-top:30px;
+    font-weight:bold;
+    color:#002b5c;
+    font-size:clamp(14px,4vw,18px);
+}
+
+/* Mobile spacing */
+@media(max-width:600px){
+    .slide{
+        padding:12px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- SLIDE 1 -->
+<div class="slide">
+
+    <!-- GLOW MOVING TEXT -->
+    <div class="glow-container">
+        <div class="moving-glow-text">GOOD MORNING TO ALL</div>
+    </div>
+
+    <!-- MARQUEE ONLY FOR THIS -->
+    <marquee behavior="alternate">
+        <h1>SSC PUBLIC EXAMINATIONS – MARCH 2026</h1>
+    </marquee>
+
+    <h2>CENTER NO AND NAME : 24016 – ZPHS MUJAHIDPUR</h2>
+
+    <!-- NO MARQUEE HERE -->
+    <div class="exam-box">
+        TODAY'S (07.04.2026) EXAM : BIOLOGICAL SCIENCE
+    </div>
+
+    <div class="highlight">
+        TIMINGS : 9.30 AM TO 11.00 AM
+    </div>
+
+    <p class="notice">
+        ** All the invigilators are requested to attend the Exam center on or before 8.30 AM **
+    </p>
+
+    <div class="highlight">
+        Exam Duty – Free Teachers' List
+    </div>
+
+    <div class="list">
+        1) SMT. M. MAJULA, SA(BIO.SCI)
+        2) SRI. S. VENKATA CHAKRAPANI, SA(MATHS)
+        3) SRI. E. PRABHAKAR , SA(ENGLISH)
+    </div>
+
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide">
+
+    <marquee behavior="alternate">
+        <h1>ALL THE BEST & HAVE A GREAT DAY!</h1>
+    </marquee>
+
+    <div class="footer">
+        Regards,<br><br>
+        CS & DO – 24016 –<br>
+        ZPHS MUJAHIDPUR
+    </div>
+
+</div>
+
+</body>
+</html>
+```
