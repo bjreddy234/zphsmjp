@@ -2,182 +2,275 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SSC Exams Announcement</title>
+<title>ZPHS Mujahidpur</title>
 
 <style>
-body{
+body {
     margin:0;
-    font-family:Arial, sans-serif;
-    background: linear-gradient(135deg,#eef2f3,#dfe9f3);
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #e3f2fd, #ffffff);
+
+    /* ✅ ADDED FOR FOOTER FIX */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-/* Slide Container */
-.slide{
-    width:95%;
-    max-width:900px;
-    margin:15px auto;
-    padding:15px;
-    background:#ffffff;
-    border-radius:12px;
-    box-shadow:0 0 12px rgba(0,0,0,0.2);
-    text-align:center;
+/* BACKGROUND SLIDER */
+.background-slider {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    overflow: hidden;
 }
 
-/* ===== GLOW TEXT ===== */
-.glow-container{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:70px;
+.slide {
+    position: absolute;
+    width: 115%;
+    height: 115%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
 }
 
-.moving-glow-text{
-    font-size:clamp(20px,5vw,34px);
-    font-weight:bold;
-    color:#ffffff;
+/* IMAGES */
+.slide1 { background-image: url('1.jpg'); animation: smoothCurve 35s infinite; animation-delay: 0s; }
+.slide2 { background-image: url('2.jpg'); animation: smoothCurve 35s infinite; animation-delay: 15s; }
+.slide3 { background-image: url('3.jpg'); animation: smoothCurve 35s infinite; animation-delay: 30s; }
+.slide4 { background-image: url('4.jpg'); animation: smoothCurve 35s infinite; animation-delay: 45s; }
+.slide5 { background-image: url('5.jpg'); animation: smoothCurve 35s infinite; animation-delay: 60s; }
 
-    text-shadow: 
-        0 0 5px #00e5ff,
-        0 0 10px #00e5ff,
-        0 0 20px #00e5ff,
-        0 0 40px #00bcd4;
-
-    animation: moveText 5s infinite alternate;
+/* CURVED SMOOTH ANIMATION */
+@keyframes smoothCurve {
+    0% { opacity: 0; transform: translate(-8%, 6%) scale(1); }
+    8% { opacity: 1; transform: translate(0%, 0%) scale(1.04); }
+    25% { opacity: 1; transform: translate(3%, -2%) scale(1.06); }
+    45% { opacity: 1; transform: translate(5%, -5%) scale(1.07); }
+    65% { opacity: 1; transform: translate(2%, -7%) scale(1.08); }
+    80% { opacity: 1; transform: translate(-2%, -4%) scale(1.06); }
+    92% { opacity: 0; transform: translate(-6%, 2%) scale(1.03); }
+    100% { opacity: 0; transform: translate(-8%, 6%) scale(1); }
 }
 
-@keyframes moveText {
-    0% { transform: translateX(-30px); }
-    100% { transform: translateX(30px); }
+/* OVERLAY */
+.bg-overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    z-index: -1;
 }
 
-/* Headings */
-h1{
-    font-size:clamp(18px,4vw,26px);
-    color:#002b5c;
-    margin:10px 0;
+/* HEADER */
+header {
+    background: #004080;
+    color: white;
+    padding: 20px;
+    text-align: center;
 }
 
-h2{
-    font-size:clamp(16px,4vw,22px);
-    color:#6a1b9a;
-    margin:10px 0;
+header h1 {
+    margin: 5px;
+    font-size: 34px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    animation: glow 2s infinite alternate, slideDown 1.5s ease-out;
 }
 
-/* TODAY'S EXAM BOX (NO MARQUEE) */
-.exam-box{
-    background:#0d47a1;
-    color:#ffffff;
-    padding:12px;
-    margin:12px 0;
-    font-weight:bold;
-    border-radius:6px;
-    font-size:clamp(14px,4vw,20px);
+header p {
+    margin: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    animation: fadeIn 3s ease-in;
 }
 
-/* Highlight */
-.highlight{
-    background:#1565c0;
-    color:#fff;
-    padding:10px;
-    margin:10px 0;
-    font-weight:bold;
-    border-radius:5px;
-    font-size:clamp(14px,4vw,18px);
+/* NAVIGATION */
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background: #0066cc;
 }
 
-/* Notice */
-.notice{
-    color:#0d47a1;
-    font-weight:bold;
-    font-size:clamp(14px,4vw,18px);
+nav a {
+    color: white;
+    padding: 12px 18px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
 }
 
-/* List */
-.list{
-    text-align:left;
-    margin-top:10px;
-    color:#b71c1c;
-    font-weight:bold;
-    font-size:clamp(14px,4vw,18px);
+nav a:hover {
+    background: #004080;
+    transform: scale(1.1);
 }
 
-/* Footer */
-.footer{
-    text-align:right;
-    margin-top:30px;
-    font-weight:bold;
-    color:#002b5c;
-    font-size:clamp(14px,4vw,18px);
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 60px 20px;
 }
 
-/* Mobile spacing */
-@media(max-width:600px){
-    .slide{
-        padding:12px;
-    }
+/* TITLE */
+.hero h2 {
+    font-size: 64px;
+    font-weight: 900;
+    text-transform: uppercase;
+
+    background: linear-gradient(white, yellow);
+    background-size: 1000% 1000%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation: gradientMove 8s linear infinite;
+}
+
+.hero p {
+    font-size: 30px;
+    font-weight: 800;
+
+    background: linear-gradient(white, yellow);
+    background-size: 1000% 1000%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation: gradientMove 10s linear infinite;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% }
+    100% { background-position: 100% }
+}
+
+/* CARDS */
+.container {
+    padding: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+    gap: 30px;
+}
+
+/* CARD */
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.25);
+    text-align: center;
+    transition: 0.4s;
+    animation: zoomIn 1s ease-in;
+}
+
+.card h3 { font-size: 22px; }
+.card p { font-size: 16px; }
+
+.card:hover { transform: scale(1.08); }
+
+.card a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 18px;
+    background: #004080;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.card a:hover { background: #0066cc; }
+
+/* FOOTER */
+footer {
+    background: #004080;
+    color: white;
+    text-align: center;
+    padding: 10px;
+
+    /* ✅ ADDED */
+    margin-top: auto;
+}
+
+/* ANIMATIONS */
+@keyframes glow {
+    from { text-shadow: 0 0 10px #fff, 0 0 20px #00ccff; }
+    to { text-shadow: 0 0 20px #00ccff, 0 0 40px #0033ff; }
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@media (min-width: 768px) {
+    header h1 { font-size: 48px; }
 }
 </style>
 </head>
 
 <body>
 
-<!-- SLIDE 1 -->
-<div class="slide">
-
-    <!-- GLOW MOVING TEXT -->
-    <div class="glow-container">
-        <div class="moving-glow-text">GOOD MORNING TO ALL</div>
-    </div>
-
-    <!-- MARQUEE ONLY FOR THIS -->
-    <marquee behavior="alternate">
-        <h1>SSC PUBLIC EXAMINATIONS – MARCH 2026</h1>
-    </marquee>
-
-    <h2>CENTER NO AND NAME : 24016 – ZPHS MUJAHIDPUR</h2>
-
-    <!-- NO MARQUEE HERE -->
-    <div class="exam-box">
-        TODAY'S (02.04.2026) EXAM : PHYSICAL SCIENCE
-    </div>
-
-    <div class="highlight">
-        TIMINGS : 9.30 AM TO 11.00 AM
-    </div>
-
-    <p class="notice">
-        ** All the invigilators are requested to attend the Exam center on or before 8.30 AM **
-    </p>
-
-    <div class="highlight">
-        Exam Duty – Free Teachers' List
-    </div>
-
-    <div class="list">
-        1) Sri. K. Yellaiah, SA (Bio. Sci)<br>
-        2) Sri. K. Venkatesh, SA (Phy. Sci)<br>
-        3) Sri. K. Sanjeeva Reddy, SA (Maths)<br>
-        4) Sri. P. Uday Kumar, SA (Phy. Sci)
-    </div>
-
+<div class="background-slider">
+    <div class="slide slide1"></div>
+    <div class="slide slide2"></div>
+    <div class="slide slide3"></div>
+    <div class="slide slide4"></div>
+    <div class="slide slide5"></div>
 </div>
 
-<!-- SLIDE 2 -->
-<div class="slide">
+<div class="bg-overlay"></div>
 
-    <marquee behavior="alternate">
-        <h1>ALL THE BEST & HAVE A GREAT DAY!</h1>
-    </marquee>
+<header>
+    <h1>ZILLA PARISHAD HIGH SCHOOL MUJAHIDPUR</h1>
+    <p>Mdl: Kulkacherla | Dist: Vikarabad | Telangana - 501502 | UDISE: 36240700815</p>
+</header>
 
-    <div class="footer">
-        Regards,<br><br>
-        CS & DO – 24016 –<br>
-        ZPHS MUJAHIDPUR
-    </div>
+<nav>
+    <a href="#">Home</a>
+    <a href="about.html">About School</a>
+    <a href="staff.html">Staff</a>
+    <a href="students.html">Students</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="exams.html">Examinations</a>
+    <a href="cce.html">CCE</a>
+    <a href="mdm.html">MDM</a>
+    <a href="contact.html">Contact</a>
+</nav>
 
+<div class="hero">
+    <h2>Welcome to Our School</h2>
+    <p>Providing quality education and building bright futures</p>
+    <p>Admission are in progress!</p>
 </div>
+
+<div class="container">
+    <div class="card"><h3>About School</h3><p>Know about our history, vision and mission.</p><a href="about.html">Read More</a></div>
+    <div class="card"><h3>Our Staff</h3><p>Meet our dedicated teaching faculty.</p><a href="staff.html">View Staff</a></div>
+    <div class="card"><h3>Students</h3><p>Student information and activities.</p><a href="students.html">Explore</a></div>
+    <div class="card"><h3>Gallery</h3><p>Photos and events of our school.</p><a href="gallery.html">View Gallery</a></div>
+    <div class="card"><h3>Examinations</h3><p>Results, schedules and updates.</p><a href="exams.html">Check Now</a></div>
+    <div class="card"><h3>CCE</h3><p>FAs, SAs and updates.</p><a href="cce.html">Check Now</a></div>
+    <div class="card"><h3>MDM</h3><p>MDM and updates.</p><a href="mdm.html">Check Now</a></div>
+    <div class="card"><h3>Contact Us</h3><p>Get in touch with school administration.</p><a href="contact.html">Contact</a></div>
+</div>
+
+<footer>
+    <p>© 2026 ZPHS Mujahidpur | All Rights Reserved</p>
+</footer>
 
 </body>
 </html>
-```
