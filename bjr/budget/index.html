@@ -10,6 +10,192 @@
 body{
     margin:0;
     font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #dde5ec, #cfd9df);
+    color:#222;
+}
+
+/* MARQUEE */
+.marquee {
+    overflow: hidden;
+    white-space: nowrap;
+    text-align:center;
+}
+
+.marquee h1 {
+    display: inline-block;
+    padding:20px;
+    font-size:32px;
+    font-weight:bold;
+    color:#0b3d91;
+    animation: move 10s linear infinite alternate;
+}
+
+/* ANIMATION */
+@keyframes move {
+    from { transform: translateX(-10%); }
+    to { transform: translateX(10%); }
+}
+
+/* TABLE CONTAINER */
+.table-container{
+    overflow-x:auto;
+    margin:10px;
+}
+
+/* TABLE */
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    border-radius:8px;
+}
+
+/* HEADER (BLINKING) */
+th{
+    background:#0b3d91;
+    color:white;
+    padding:14px;
+    font-size:22px;
+    border:1px solid #999;
+    font-weight:bold;
+    animation: blink 2s infinite alternate;
+}
+
+/* BLINK EFFECT */
+@keyframes blink {
+    from {
+        opacity:1;
+        text-shadow: 0 0 5px white;
+    }
+    to {
+        opacity:0.7;
+        text-shadow: 0 0 15px yellow;
+    }
+}
+
+/* BODY */
+td{
+    padding:14px;
+    font-size:20px;   /* INCREASED FONT SIZE */
+    text-align:center;
+    border:1px solid #999;
+    font-weight:bold;
+}
+
+/* ROW COLORS */
+tr:nth-child(even){
+    background:#eef3f8;
+}
+
+/* HOVER */
+tr:hover{
+    background:#d6e4ff;
+}
+
+/* TOTAL ROWS */
+.total{
+    background:#c8f7c5;
+    font-size:22px;
+}
+
+.withdrawn{
+    background:#ffd6e7;
+    font-size:22px;
+}
+
+.balance{
+    background:#fff3b0;
+    font-size:24px;
+}
+
+/* MOBILE */
+@media (max-width:600px){
+    .marquee h1{
+        font-size:20px;
+        padding:15px;
+    }
+    th{
+        font-size:16px;
+    }
+    td{
+        font-size:16px;
+        padding:10px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="marquee">
+<h1>
+ZPHS MUJAHIDPUR - BUDGET :2025-26
+</h1>
+</div>
+
+<div class="table-container">
+<table>
+<tr>
+<th>SL. NO</th>
+<th>AMOUNT (₹)</th>
+<th>DETAILS</th>
+</tr>
+
+<tr><td>1</td><td>2000</td><td>Badi baata</td></tr>
+<tr><td>2</td><td>37500</td><td>School composite grants (50%)</td></tr>
+<tr><td>3</td><td>16500</td><td>School complex grants - CRC (50%)</td></tr>
+<tr><td>4</td><td>12500</td><td>Sports grants (50%)</td></tr>
+<tr><td>5</td><td>4000</td><td>Girl Child Empowerment Amount</td></tr>
+<tr><td>6</td><td>6250</td><td>Houses and clubs material purchase</td></tr>
+<tr><td>7</td><td>12500</td><td>Sports grants (50%)</td></tr>
+<tr><td>8</td><td>15000</td><td>Self Defense Program</td></tr>
+<tr><td>9</td><td>37500</td><td>VE - IT</td></tr>
+<tr><td>10</td><td>37500</td><td>VE - AGR</td></tr>
+<tr><td>11</td><td>37500</td><td>School composite grants (50%)</td></tr>
+<tr><td>12</td><td>16500</td><td>School complex grants - CRC (50%)</td></tr>
+<tr><td>13</td><td>10000</td><td>STEM Amount</td></tr>
+<tr><td>14</td><td>35055</td><td>Snacks Amount</td></tr>
+<tr><td>15</td><td>1000</td><td>EBSB</td></tr>
+<tr><td>16</td><td>1000</td><td>Bhasha Utsav</td></tr>
+<tr><td>17</td><td>1000</td><td>Financial Literacy Program</td></tr>
+<tr><td>18</td><td>500</td><td>Safety and Security Board</td></tr>
+<tr><td>19</td><td>10000</td><td>Pre Vocational Education (VI-VIII)</td></tr>
+<tr><td>20</td><td>5198</td><td>Library Grants</td></tr>
+
+<tr class="total">
+<td colspan="2">TOTAL AMOUNT RELEASED</td>
+<td>₹ 2,99,003</td>
+</tr>
+
+<tr class="withdrawn">
+<td colspan="2">AMOUNT WITHDRAWN FROM PFMS</td>
+<td>₹ 2,99,003</td>
+</tr>
+
+<tr class="balance">
+<td colspan="2">BALANCE IN PFMS</td>
+<td>₹ 0</td>
+</tr>
+
+</table>
+</div>
+
+</body>
+</html>
+```
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZPHS Mujahidpur Budget</title>
+
+<style>
+body{
+    margin:0;
+    font-family: 'Segoe UI', sans-serif;
     background: linear-gradient(135deg, #000428, #004e92);
     color:white;
 }
