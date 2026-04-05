@@ -21,13 +21,13 @@ header {
     overflow:hidden;
 }
 
-/* 🔥 MARQUEE CONTAINER */
+/* MARQUEE CONTAINER */
 .title-marquee {
     overflow:hidden;
     white-space:nowrap;
 }
 
-/* 🔥 3D + MOVING TITLE */
+/* TITLE */
 .main-title {
     display:inline-block;
     font-size:40px;
@@ -47,20 +47,21 @@ header {
         8px 8px 8px rgba(0,0,0,0.6);
 }
 
-/* 🔥 SWITCH TITLES */
+/* SWITCH TITLES */
 .desktop-title { display:inline; }
 .mobile-title { display:none; }
 
+/* MOBILE FIX */
 @media (max-width:600px){
     .main-title{
-        font-size:22px;
-        letter-spacing:1px;
+        font-size:32px;
+        letter-spacing:2px;
     }
     .desktop-title{ display:none; }
     .mobile-title{ display:inline; }
 }
 
-/* 🔥 LEFT-RIGHT MOVEMENT */
+/* STOP MOVEMENT */
 @keyframes marqueeMove {
     from {transform:translateX(0);}
     to {transform:translateX(0);}
@@ -128,7 +129,7 @@ nav a:hover {
 
 /* NOTICE */
 .marquee {
-    height:55px;
+    height:60px;
     overflow:hidden;
     background:#cc0000;
     color:white;
@@ -143,12 +144,12 @@ nav a:hover {
     top:50%;
     transform:translateY(-50%);
     left:100%;
-    animation:scroll 16s linear infinite;
+    animation:scroll 12s linear infinite;
 }
 
 @keyframes scroll {
     from {left:100%;}
-    to {left:-120%;}
+    to {left:-100%;}
 }
 
 .new-blink {
@@ -346,8 +347,7 @@ footer {
 <img src="5.jpg">
 
 <div class="hero-content">
-<h2>Welcome to Our School</h2>
-<p><b>Website under construction!</b></p>
+<h2>Website under construction!</h2>
 </div>
 </div>
 
