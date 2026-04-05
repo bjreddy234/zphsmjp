@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,7 +50,7 @@ header {
 .desktop-title { display:inline; }
 .mobile-title { display:none; }
 
-/* MOBILE FIX */
+/* MOBILE HEADER BIG */
 @media (max-width:600px){
     .main-title{
         font-size:32px;
@@ -127,9 +126,9 @@ nav a:hover {
     background:#004080;
 }
 
-/* NOTICE */
+/* NOTICE (FIXED MARQUEE) */
 .marquee {
-    height:60px;
+    height:65px;
     overflow:hidden;
     background:#cc0000;
     color:white;
@@ -143,13 +142,13 @@ nav a:hover {
     font-size:20px;
     top:50%;
     transform:translateY(-50%);
-    left:100%;
-    animation:scroll 12s linear infinite;
+    animation:scroll 18s linear infinite;
 }
 
+/* 🔥 PERFECT SCROLL FIX */
 @keyframes scroll {
-    from {left:100%;}
-    to {left:-100%;}
+    0%   { transform: translateX(100%) translateY(-50%); }
+    100% { transform: translateX(-100%) translateY(-50%); }
 }
 
 .new-blink {
@@ -347,7 +346,8 @@ footer {
 <img src="5.jpg">
 
 <div class="hero-content">
-<h2>Website under construction!</h2>
+<h2>Welcome to Our School</h2>
+<p><b>Website under construction!</b></p>
 </div>
 </div>
 
