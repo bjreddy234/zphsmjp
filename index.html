@@ -1,12 +1,10 @@
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZPHS Mujahidpur</title>
+<title>ZPHS MUJAHIDPUR</title>
 
 <style>
 body {
@@ -38,6 +36,11 @@ header {
     position:relative;
     animation: marqueeMove 10s linear infinite alternate;
 
+    /* CENTER FIX */
+    text-align:center;
+    line-height:1.2;
+    width:100%;
+
     /* 3D EFFECT */
     text-shadow:
         2px 2px 0 #000,
@@ -48,8 +51,8 @@ header {
 
 /* 🔥 LEFT-RIGHT MOVEMENT */
 @keyframes marqueeMove {
-    from {transform:translateX(-10%);}
-    to {transform:translateX(10%);}
+    from {transform:translateX(0);}
+    to {transform:translateX(0);}
 }
 
 /* LIGHT EFFECTS */
@@ -300,8 +303,10 @@ footer {
 
 <header>
 <div class="title-marquee">
-<h1 class="main-title">ZILLA PARISHAD HIGH SCHOOL <br>
-                             MUJAHIDPUR</h1>
+<h1 class="main-title">
+ZILLA PARISHAD HIGH SCHOOL<br>
+MUJAHIDPUR
+</h1>
 </div>
 <p>Mdl: Kulkacherla | Dist: Vikarabad | Telangana - 501502 | UDISE : 36240700815 </p>
 </header>
