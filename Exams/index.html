@@ -1,44 +1,213 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>About - ZPHS Mujahidpur</title>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SSC PUBLIC EXAMS - MARCH 2026</title>
+
 <style>
-body {
+
+/* ===== GLOBAL ===== */
+body{
     margin:0;
-    font-family: Arial;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg,#0b1f3a,#0d47a1,#001f54);
+}
+
+/* ===== SLIDE ===== */
+.slide{
+    width:95%;
+    max-width:900px;
+    margin:20px auto;
+    padding:20px;
+    border-radius:16px;
+    background: rgba(255,255,255,0.92);
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
     text-align:center;
-    background:#f5f7fa;
 }
-header {
-    background:#002b5c;
-    color:white;
-    padding:15px;
+
+/* ===== HEADER GLOW ===== */
+.glow-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100px;
+    background:#001f54;
+    border-radius:12px;
+    margin-bottom:10px;
 }
-.content {
-    padding:50px;
+
+.moving-glow-text{
+    font-size:clamp(28px,6vw,44px);
+    font-weight:900;
+    letter-spacing:2px;
+    color:#ffffff;
+
+    text-shadow:
+        0 0 5px #ffffff,
+        0 0 10px #ffffff,
+        0 0 20px #00e5ff,
+        0 0 40px #00e5ff,
+        0 0 60px #00e5ff;
+
+    animation: moveText 4s ease-in-out infinite alternate;
 }
-a {
-    padding:10px 20px;
-    background:#0b3d6d;
-    color:white;
-    text-decoration:none;
-    border-radius:6px;
+
+@keyframes moveText{
+    0%{transform:translateX(-25px);}
+    100%{transform:translateX(25px);}
 }
+
+/* ===== HEADINGS ===== */
+h1{
+    font-size:clamp(20px,4vw,28px);
+    color:#002b5c;
+    margin:12px 0;
+}
+
+h2{
+    font-size:clamp(16px,4vw,22px);
+    color:#4a148c;
+    margin:10px 0;
+}
+
+/* ===== RED EXAM BOX ===== */
+.exam-box{
+    background: linear-gradient(135deg,#b71c1c,#ff1744);
+    color:#ffffff;
+    padding:16px;
+    margin:15px 0;
+    font-weight:bold;
+    border-radius:10px;
+    font-size:clamp(16px,4vw,22px);
+
+    box-shadow:
+        0 0 10px rgba(255,0,0,0.6),
+        0 0 20px rgba(255,0,0,0.5);
+
+    letter-spacing:1px;
+}
+
+/* ===== TIMINGS & SECTIONS ===== */
+.highlight{
+    background:#001f54;
+    color:#ffea00;
+    padding:16px;
+    margin:15px 0;
+    font-weight:900;
+    border-radius:10px;
+
+    font-size:clamp(18px,5vw,24px);
+
+    box-shadow:
+        0 0 10px rgba(0,0,255,0.5),
+        0 0 20px rgba(255,234,0,0.5);
+
+    letter-spacing:1px;
+}
+
+/* ===== NOTICE (BRINJAL STYLE) ===== */
+.notice{
+    background:#4a148c;   /* brinjal color */
+    color:#ffffff;        /* white text */
+    padding:14px;
+    margin-top:15px;
+    border-radius:10px;
+
+    font-weight:900;
+    font-size:clamp(16px,4vw,20px);
+
+    box-shadow:
+        0 0 10px rgba(74,20,140,0.6),
+        0 0 20px rgba(74,20,140,0.4);
+
+    letter-spacing:1px;
+}
+
+/* ===== LIST ===== */
+.list{
+    text-align:left;
+    margin-top:15px;
+    padding-left:15px;
+    color:#b71c1c;
+    font-weight:bold;
+    line-height:1.6;
+    font-size:clamp(15px,4vw,19px);
+}
+
+/* ===== FOOTER ===== */
+.footer{
+    text-align:right;
+    margin-top:40px;
+    font-weight:bold;
+    color:#002b5c;
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:600px){
+    .slide{
+        padding:15px;
+    }
+    .glow-container{
+        height:80px;
+    }
+}
+
 </style>
 </head>
 
 <body>
 
-<header>
-<h2>ZPHS MUJAHIDPUR</h2>
-</header>
+<!-- SLIDE 1 -->
+<div class="slide">
 
-<div class="content">
-<h1>About Page</h1>
-<p>Details about the school will be updated soon.</p>
+    <div class="glow-container">
+        <div class="moving-glow-text">GOOD EVENING TO ALL</div>
+    </div>
 
-<a href="/">⬅ Back to Home</a>
+    <marquee behavior="alternate">
+        <h1>SSC PUBLIC EXAMINATIONS – MARCH 2026</h1>
+    </marquee>
+
+    <h2>CENTER NO : 24016 – ZPHS MUJAHIDPUR</h2>
+
+    <div class="exam-box">
+        TOMORROW'S (07.04.2026) EXAM : BIOLOGICAL SCIENCE
+    </div>
+
+    <div class="highlight">
+        ⏰ TIMINGS : 9.30 AM TO 11.00 AM
+    </div>
+
+    <p class="notice">
+        ⚠ All invigilators must report on or before 8.30 AM
+    </p>
+
+    <div class="highlight">
+        Exam Duty – Free Teachers
+    </div>
+
+    <div class="list">
+        1) SMT. M. MANJULA – SA (Bio. Sci)<br>
+        2) SRI. S. VENKATA CHAKRAPANI – SA (Maths)<br>
+        3) SRI. P. AMBAIAH – SA (English)<br>
+    </div>
+
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide">
+
+    <marquee behavior="alternate">
+        <h1>All the best! Have a great day ahead.</h1>
+    </marquee>
+
+    <div class="footer">
+        Regards,<br><br>
+        <strong>CS & DO – 24016</strong><br>
+        ZPHS MUJAHIDPUR
+    </div>
+
 </div>
 
 </body>
