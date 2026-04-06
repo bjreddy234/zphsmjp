@@ -81,15 +81,9 @@ h2{
     font-weight:bold;
     border-radius:10px;
     font-size:clamp(16px,4vw,22px);
-
-    box-shadow:
-        0 0 10px rgba(255,0,0,0.6),
-        0 0 20px rgba(255,0,0,0.5);
-
-    letter-spacing:1px;
 }
 
-/* ===== TIMINGS & SECTIONS ===== */
+/* ===== TIMINGS ===== */
 .highlight{
     background:#001f54;
     color:#ffea00;
@@ -97,32 +91,46 @@ h2{
     margin:15px 0;
     font-weight:900;
     border-radius:10px;
-
     font-size:clamp(18px,5vw,24px);
-
-    box-shadow:
-        0 0 10px rgba(0,0,255,0.5),
-        0 0 20px rgba(255,234,0,0.5);
-
-    letter-spacing:1px;
 }
 
-/* ===== NOTICE ===== */
+/* ===== TIMER ===== */
+.timer-box{
+    background:#000;
+    color:#00ffcc;
+    padding:18px;
+    margin:20px 0;
+    border-radius:12px;
+
+    font-size:clamp(20px,5vw,28px);
+    font-weight:bold;
+
+    box-shadow:0 0 10px #00ffcc,0 0 25px #00ffcc;
+    letter-spacing:2px;
+}
+
+/* ===== NOTICE (BIG + BLINKING ALERT) ===== */
 .notice{
-    background:#4a148c;
+    background:#4a148c;   /* brinjal color */
     color:#ffffff;
-    padding:14px;
+    padding:18px;
     margin-top:15px;
     border-radius:10px;
 
     font-weight:900;
-    font-size:clamp(16px,4vw,20px);
+    font-size:clamp(20px,5vw,28px);  /* bigger font */
 
-    box-shadow:
-        0 0 10px rgba(74,20,140,0.6),
-        0 0 20px rgba(74,20,140,0.4);
-
+    text-align:center;
     letter-spacing:1px;
+
+    animation: blinkNotice 1s infinite;
+}
+
+/* Blinking effect */
+@keyframes blinkNotice{
+    0%{opacity:1;}
+    50%{opacity:0.4;}
+    100%{opacity:1;}
 }
 
 /* ===== LIST ===== */
@@ -132,8 +140,6 @@ h2{
     padding-left:15px;
     color:#b71c1c;
     font-weight:bold;
-    line-height:1.6;
-    font-size:clamp(15px,4vw,19px);
 }
 
 /* ===== FOOTER ===== */
@@ -141,17 +147,6 @@ h2{
     text-align:right;
     margin-top:40px;
     font-weight:bold;
-    color:#002b5c;
-}
-
-/* ===== MOBILE ===== */
-@media(max-width:600px){
-    .slide{
-        padding:15px;
-    }
-    .glow-container{
-        height:80px;
-    }
 }
 
 </style>
@@ -159,78 +154,83 @@ h2{
 
 <body>
 
-<!-- SLIDE 1 -->
 <div class="slide">
 
-    <div class="glow-container">
-        <div class="moving-glow-text" id="greetingText"></div>
-    </div>
+<div class="glow-container">
+<div class="moving-glow-text" id="greetingText"></div>
+</div>
 
-    <marquee behavior="alternate">
-        <h1>SSC PUBLIC EXAMINATIONS – MARCH 2026</h1>
-    </marquee>
+<marquee><h1>SSC PUBLIC EXAMINATIONS – MARCH 2026</h1></marquee>
 
-    <h2>CENTER NO : 24016 – ZPHS MUJAHIDPUR</h2>
+<h2>CENTER NO : 24016 – ZPHS MUJAHIDPUR</h2>
 
-    <div class="exam-box">
-        TOMORROW'S (07.04.2026) EXAM : BIOLOGICAL SCIENCE
-    </div>
+<div class="exam-box">
+TOMORROW'S (07.04.2026) EXAM : BIOLOGICAL SCIENCE
+</div>
 
-    <div class="highlight">
-        ⏰ TIMINGS : 9.30 AM TO 11.00 AM
-    </div>
+<div class="highlight">
+⏰ TIMINGS : 9.30 AM TO 11.00 AM
+</div>
 
-    <p class="notice">
-        ⚠ All invigilators must report on or before 8.30 AM
-    </p>
+<!-- COUNTDOWN -->
+<div id="countdown" class="timer-box"></div>
 
-    <div class="highlight">
-        Exam Duty – Free Teachers
-    </div>
+<p class="notice">
+⚠ All invigilators must report on or before 8.30 AM
+</p>
 
-    <div class="list">
-        1) SMT. M. MANJULA – SA (Bio. Sci)<br>
-        2) SRI. S. VENKATA CHAKRAPANI – SA (Maths)<br>
-        3) SRI. P. AMBAIAH – SA (English)<br>
-    </div>
+<div class="highlight">
+Exam Duty – Free Teachers
+</div>
+
+<div class="list">
+1) SMT. M. MANJULA – SA (Bio. Sci)<br>
+2) SRI. S. VENKATA CHAKRAPANI – SA (Maths)<br>
+3) SRI. P. AMBAIAH – SA (English)
+</div>
 
 </div>
 
-<!-- SLIDE 2 -->
 <div class="slide">
+<marquee><h1>All the best! Have a great day ahead.</h1></marquee>
 
-    <marquee behavior="alternate">
-        <h1>All the best! Have a great day ahead.</h1>
-    </marquee>
-
-    <div class="footer">
-        Regards,<br><br>
-        <strong>CS & DO – 24016</strong><br>
-        ZPHS MUJAHIDPUR
-    </div>
-
+<div class="footer">
+Regards,<br><br>
+<strong>CS & DO – 24016</strong><br>
+ZPHS MUJAHIDPUR
+</div>
 </div>
 
-<!-- AUTO GREETING SCRIPT -->
-<script id="autoGreeting">
-function updateGreeting() {
+<!-- AUTO GREETING -->
+<script>
+let h=new Date().getHours();
+greetingText.innerText = h<12 ? "GOOD MORNING TO ALL" :
+                         h<17 ? "GOOD AFTERNOON TO ALL" :
+                                "GOOD EVENING TO ALL";
+</script>
+
+<!-- FIXED COUNTDOWN -->
+<script>
+const target = new Date("2026-04-07T08:45:00");
+
+function updateCountdown(){
     const now = new Date();
-    const hours = now.getHours();
+    const diff = target - now;
 
-    let greeting = "GOOD EVENING TO ALL";
-
-    if (hours < 12) {
-        greeting = "GOOD MORNING TO ALL";
-    } else if (hours < 17) {
-        greeting = "GOOD AFTERNOON TO ALL";
-    } else {
-        greeting = "GOOD EVENING TO ALL";
+    if(diff <= 0){
+        countdown.innerHTML = "⏰ REPORTING TIME REACHED";
+        return;
     }
 
-    document.getElementById("greetingText").innerText = greeting;
+    const hrs = Math.floor(diff / (1000*60*60));
+    const mins = Math.floor((diff % (1000*60*60)) / (1000*60));
+    const secs = Math.floor((diff % (1000*60)) / 1000);
+
+    countdown.innerHTML = `⏳ ${hrs}h ${mins}m ${secs}s`;
 }
 
-updateGreeting();
+setInterval(updateCountdown,1000);
+updateCountdown();
 </script>
 
 </body>
