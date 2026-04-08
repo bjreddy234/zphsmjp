@@ -15,7 +15,7 @@ body{
     color:#fff;
 }
 
-/* ===== HEADER MARQUEE (UNCHANGED) ===== */
+/* HEADER MARQUEE */
 .marquee{
     background:#ffcc00;
     color:#000;
@@ -35,30 +35,42 @@ body{
     100%{ transform: translateX(-100%); }
 }
 
-/* ===== SECTION MARQUEE (EDGE PERFECT) ===== */
+/* EXAM CARD */
+.exam-card{
+    margin:15px auto;
+    padding:12px 25px;
+    max-width:500px;
+    border-radius:30px;
+    background: linear-gradient(45deg,#ff0000,#8b0000);
+    color:#fff;
+    font-size:22px;
+    font-weight:bold;
+    text-align:center;
+    box-shadow:0 0 15px rgba(255,0,0,0.6);
+}
+
+/* SECTION MARQUEE */
 .section-marquee{
-    width:92%;              /* EXACT SAME AS TABLE */
+    width:92%;
     margin:0 auto;
     overflow:hidden;
 }
 
-/* BIG TEXT + PERFECT BOUNCE */
 .section-marquee span{
     display:block;
     text-align:center;
-    font-size:28px;
-    font-weight:900;
+    font-size:22px;      /* reduced */
+    font-weight:800;
     white-space:nowrap;
     animation: bounce 4s ease-in-out infinite alternate;
 }
 
-/* EDGE TOUCH MOVEMENT */
 @keyframes bounce{
     0%{ transform: translateX(-10%); }
     100%{ transform: translateX(10%); }
 }
 
-/* ===== FOOTER MARQUEE (CONTINUOUS) ===== */
+/* FOOTER MARQUEE */
 .footer-marquee{
     background:#000;
     color:#fff;
@@ -73,7 +85,7 @@ body{
     animation: scroll 12s linear infinite;
 }
 
-/* ===== LAYOUT ===== */
+/* LAYOUT */
 .container{
     max-width:1100px;
     margin:auto;
@@ -105,17 +117,19 @@ body{
     font-weight:bold;
 }
 
+/* TIMER FIX */
 .timer-box{
-    padding:12px 28px;
+    padding:10px 18px;
     border-radius:30px;
     background: linear-gradient(45deg, #0072ff, #ff3c3c);
-    font-size:22px;
+    font-size:18px;
     font-weight:bold;
     color:#fff;
     box-shadow:0 0 15px rgba(255,0,0,0.5);
+    white-space:nowrap;
 }
 
-/* ===== CARDS ===== */
+/* CARDS */
 .card{
     border-radius:10px;
     padding:12px;
@@ -127,7 +141,7 @@ body{
 .red-card{ background:#8b0000; }
 .blue-card{ background:#0b3d91; }
 
-/* ===== TABLE ===== */
+/* TABLE */
 .card table{
     background:#fff;
     color:#000;
@@ -163,6 +177,16 @@ td{
 @media(max-width:600px){
     .main-title{ font-size:26px; }
     .row{ flex-direction:column; }
+
+    .section-marquee span{
+        font-size:18px;
+    }
+
+    .timer-box{
+        font-size:14px;
+        padding:8px 12px;
+    }
+
     table{ width:100%; }
     th, td{
         font-size:14px;
@@ -175,7 +199,6 @@ td{
 
 <body>
 
-<!-- HEADER -->
 <div class="marquee">
 <span>🏫 ZILLA PARISHAD HIGH SCHOOL MUJAHIDPUR AND MUJAHIDPUR SCHOOL COMPLEX</span>
 </div>
@@ -187,7 +210,10 @@ Summative Assessment - II (2026)<br>
 Classes I to IX
 </div>
 
-<!-- DATE + TIMER -->
+<div class="exam-card">
+📌 SA-II Exam | 09 April 2026
+</div>
+
 <div class="row">
     
     <div class="date" id="examDateText">
@@ -204,7 +230,7 @@ Classes I to IX
 <div class="card red-card">
 
 <div class="section-marquee">
-<span>📘 CLASSES I TO V</span>
+<span>📘 CLASSES : I TO V</span>
 </div>
 
 <table>
@@ -222,7 +248,7 @@ Classes I to IX
 <div class="card blue-card">
 
 <div class="section-marquee">
-<span>📗 CLASSES VI TO IX</span>
+<span>📗 CLASSES : VI TO IX</span>
 </div>
 
 <table>
@@ -256,7 +282,6 @@ Classes I to IX
 
 </div>
 
-<!-- FOOTER -->
 <div class="footer-marquee">
 <span>✨ ALL THE BEST TO STUDENTS ✨</span>
 </div>
@@ -265,20 +290,18 @@ Classes I to IX
 
 <script>
 
-// DATE TEXT
 var today = new Date();
 var examDateOnly = new Date("April 9, 2026");
 
 var textBox = document.getElementById("examDateText");
 
 if(today.toDateString() === examDateOnly.toDateString()){
-    textBox.innerHTML = "Today's SA2 Exam :<br>09 April 2026 (Thursday)";
+    textBox.innerHTML = "Today's SA2 Exam<br>09 April 2026 (Thursday)";
 }
 else{
-    textBox.innerHTML = "Tomorrow's SA2 Exam :<br>09 April 2026 (Thursday)";
+    textBox.innerHTML = "Tomorrow's SA2 Exam<br>09 April 2026 (Thursday)";
 }
 
-// TIMER
 var startTime = new Date("April 9, 2026 09:00:00").getTime();
 var endTime = new Date("April 9, 2026 12:00:00").getTime();
 
