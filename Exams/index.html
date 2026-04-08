@@ -122,11 +122,19 @@ body{
     padding:10px 18px;
     border-radius:30px;
     background: linear-gradient(45deg, #0072ff, #ff3c3c);
-    font-size:18px;
+    font-size:20px;          /* slightly increased */
     font-weight:bold;
     color:#fff;
     box-shadow:0 0 15px rgba(255,0,0,0.5);
     white-space:nowrap;
+}
+
+/* MOBILE BALANCE */
+@media(max-width:600px){
+    .timer-box{
+        font-size:16px;      /* increased but still fits in one line */
+        padding:8px 12px;
+    }
 }
 
 /* CARDS */
