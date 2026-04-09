@@ -56,7 +56,7 @@ body{
     100%{ transform: translateX(10%); }
 }
 
-/* FOOTER MARQUEE */
+/* FOOTER */
 .footer-marquee{
     background:#000;
     color:#fff;
@@ -103,7 +103,6 @@ body{
     font-weight:bold;
 }
 
-/* TIMER UPDATED */
 .timer-box{
     padding:10px 18px;
     border-radius:30px;
@@ -112,7 +111,6 @@ body{
     font-weight:bold;
     color:#fff;
     box-shadow:0 0 15px rgba(255,0,0,0.5);
-    white-space:nowrap;
 }
 
 /* CARDS */
@@ -121,7 +119,6 @@ body{
     padding:12px;
     margin:15px auto;
     max-width:820px;
-    color:#fff;
 }
 
 .red-card{ background:#8b0000; }
@@ -134,24 +131,20 @@ body{
     width:92%;
     margin:5px auto;
     border-collapse:collapse;
-    table-layout:fixed;
 }
 
 th, td{
     border:2px solid #000;
     padding:8px;
     text-align:center;
-    width:33%;
 }
 
 th{
     background:#2c5364;
     color:#fff;
-    font-size:19px;
 }
 
 td{
-    font-size:18px;
     font-weight:bold;
 }
 
@@ -163,21 +156,7 @@ td{
 @media(max-width:600px){
     .main-title{ font-size:26px; }
     .row{ flex-direction:column; }
-
-    .section-marquee span{
-        font-size:18px;
-    }
-
-    .timer-box{
-        font-size:16px;
-        padding:8px 12px;
-    }
-
     table{ width:100%; }
-    th, td{
-        font-size:14px;
-        padding:6px;
-    }
 }
 
 </style>
@@ -197,20 +176,12 @@ Classes I to IX
 </div>
 
 <div class="row">
-    
-    <div class="date" id="examDateText">
-        Loading...
-    </div>
-
-    <div class="timer-box" id="countdown">
-        ⏳ Loading...
-    </div>
-
+    <div class="date" id="examDateText"></div>
+    <div class="timer-box" id="countdown"></div>
 </div>
 
 <!-- PRIMARY -->
 <div class="card red-card">
-
 <div class="section-marquee">
 <span>📘 CLASSES : I TO V</span>
 </div>
@@ -219,16 +190,14 @@ Classes I to IX
 <tr><th>Class</th><th>Subject</th><th>Time</th></tr>
 <tr class="highlight">
 <td>I to V</td>
-<td>First Language (Telugu / Urdu etc.)</td>
+<td id="primarySub">Loading...</td>
 <td>9.00 AM to 11.30 AM</td>
 </tr>
 </table>
-
 </div>
 
 <!-- HIGH SCHOOL -->
 <div class="card blue-card">
-
 <div class="section-marquee">
 <span>📗 CLASSES : VI TO IX</span>
 </div>
@@ -236,32 +205,12 @@ Classes I to IX
 <table>
 <tr><th>Class</th><th>Subject</th><th>Time</th></tr>
 
-<tr class="highlight">
-<td>VI</td>
-<td>Second Language (Hindi / Telugu etc.)</td>
-<td>9.00 AM to 11.30 AM</td>
-</tr>
-
-<tr class="highlight">
-<td>VII</td>
-<td>Second Language (Hindi / Telugu etc.)</td>
-<td>9.00 AM to 11.30 AM</td>
-</tr>
-
-<tr class="highlight">
-<td>VIII</td>
-<td>Second Language (Hindi / Telugu etc.)</td>
-<td>9.00 AM to 11.45 AM</td>
-</tr>
-
-<tr class="highlight">
-<td>IX</td>
-<td>Second Language (Hindi / Telugu etc.)</td>
-<td>9.00 AM to 12.00 Noon</td>
-</tr>
+<tr class="highlight"><td>VI</td><td id="sub6"></td><td>9.00 AM to 11.30 AM</td></tr>
+<tr class="highlight"><td>VII</td><td id="sub7"></td><td>9.00 AM to 11.30 AM</td></tr>
+<tr class="highlight"><td>VIII</td><td id="sub8"></td><td>9.00 AM to 11.45 AM</td></tr>
+<tr class="highlight"><td>IX</td><td id="sub9"></td><td>9.00 AM to 12.00 Noon</td></tr>
 
 </table>
-
 </div>
 
 <div class="footer-marquee">
@@ -272,28 +221,66 @@ Classes I to IX
 
 <script>
 
-var today = new Date();
-var examDateOnly = new Date("April 9, 2026");
+// CURRENT TIME
+var now = new Date();
 
-var textBox = document.getElementById("examDateText");
+// SWITCH TIME → 09 APRIL 12 NOON
+var switchTime = new Date("April 9, 2026 12:00:00");
 
-if(today.toDateString() === examDateOnly.toDateString()){
-    textBox.innerHTML = "Today's SA2 Exam :<br>09 April 2026 (Thursday)";
-}
-else{
-    textBox.innerHTML = "Tomorrow's SA2 Exam :<br>09 April 2026 (Thursday)";
-}
-
+// DEFAULT → 09 APRIL
+var examDate = "09 April 2026 (Thursday)";
 var startTime = new Date("April 9, 2026 09:00:00").getTime();
 var endTime = new Date("April 9, 2026 12:00:00").getTime();
 
+var primarySubject = "First Language (Telugu / Urdu etc.)";
+var subjects = [
+    "Second Language (Hindi / Telugu etc.)",
+    "Second Language (Hindi / Telugu etc.)",
+    "Second Language (Hindi / Telugu etc.)",
+    "Second Language (Hindi / Telugu etc.)"
+];
+
+// AFTER 12 NOON → SWITCH TO 10 APRIL
+if(now >= switchTime){
+
+    examDate = "10 April 2026 (Friday)";
+    startTime = new Date("April 10, 2026 09:00:00").getTime();
+    endTime = new Date("April 10, 2026 12:00:00").getTime();
+
+    primarySubject = "English";
+    subjects = [
+        "Third Language (English)",
+        "Third Language (English)",
+        "Third Language (English)",
+        "Third Language (English)"
+    ];
+}
+
+// DATE TEXT
+var textBox = document.getElementById("examDateText");
+
+if(now.toDateString() === new Date(startTime).toDateString()){
+    textBox.innerHTML = "Today's SA2 Exam :<br>" + examDate;
+}
+else{
+    textBox.innerHTML = "Tomorrow's SA2 Exam :<br>" + examDate;
+}
+
+// SET SUBJECTS
+document.getElementById("primarySub").innerHTML = primarySubject;
+document.getElementById("sub6").innerHTML = subjects[0];
+document.getElementById("sub7").innerHTML = subjects[1];
+document.getElementById("sub8").innerHTML = subjects[2];
+document.getElementById("sub9").innerHTML = subjects[3];
+
+// TIMER
 setInterval(function(){
 
-var now = new Date().getTime();
+var current = new Date().getTime();
 var box = document.getElementById("countdown");
 
-if(now < startTime){
-    var distance = startTime - now;
+if(current < startTime){
+    var distance = startTime - current;
 
     var h = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
     var m = Math.floor((distance%(1000*60*60))/(1000*60));
@@ -301,7 +288,7 @@ if(now < startTime){
 
     box.innerHTML = "⏳ Exam Starts In: " + h+"h "+m+"m "+s+"s";
 }
-else if(now >= startTime && now <= endTime){
+else if(current >= startTime && current <= endTime){
     box.innerHTML = "🟢 Exam is Going On";
 }
 else{
