@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -224,8 +223,9 @@ Classes I to IX
 // CURRENT TIME
 var now = new Date();
 
-// SWITCH TIME → 09 APRIL 12 NOON
-var switchTime = new Date("April 9, 2026 12:00:00");
+// SWITCH TIMES
+var switch1 = new Date("April 9, 2026 12:00:00");
+var switch2 = new Date("April 10, 2026 12:00:00");
 
 // DEFAULT → 09 APRIL
 var examDate = "09 April 2026 (Thursday)";
@@ -240,14 +240,15 @@ var subjects = [
     "Second Language (Hindi / Telugu etc.)"
 ];
 
-// AFTER 12 NOON → SWITCH TO 10 APRIL
-if(now >= switchTime){
+// 10 APRIL
+if(now >= switch1 && now < switch2){
 
     examDate = "10 April 2026 (Friday)";
     startTime = new Date("April 10, 2026 09:00:00").getTime();
     endTime = new Date("April 10, 2026 12:00:00").getTime();
 
     primarySubject = "English";
+
     subjects = [
         "Third Language (English)",
         "Third Language (English)",
@@ -256,10 +257,30 @@ if(now >= switchTime){
     ];
 }
 
-// DATE TEXT
+// 11 APRIL
+else if(now >= switch2){
+
+    examDate = "11 April 2026 (Saturday)";
+    startTime = new Date("April 11, 2026 09:00:00").getTime();
+    endTime = new Date("April 11, 2026 12:00:00").getTime();
+
+    primarySubject = "Mathematics";
+
+    subjects = [
+        "Social Studies",
+        "Social Studies",
+        "Mathematics",
+        "Mathematics"
+    ];
+}
+
+// DATE TEXT (IMPORTANT FIX)
 var textBox = document.getElementById("examDateText");
 
-if(now.toDateString() === new Date(startTime).toDateString()){
+if(now >= switch2){
+    textBox.innerHTML = "Tomorrow's SA2 Exam :<br>" + examDate;
+}
+else if(now.toDateString() === new Date(startTime).toDateString()){
     textBox.innerHTML = "Today's SA2 Exam :<br>" + examDate;
 }
 else{
@@ -282,11 +303,12 @@ var box = document.getElementById("countdown");
 if(current < startTime){
     var distance = startTime - current;
 
+    var days = Math.floor(distance/(1000*60*60*24));
     var h = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
     var m = Math.floor((distance%(1000*60*60))/(1000*60));
     var s = Math.floor((distance%(1000*60))/1000);
 
-    box.innerHTML = "⏳ Exam Starts In: " + h+"h "+m+"m "+s+"s";
+    box.innerHTML = "⏳ Exam Starts In: " + days+"d "+h+"h "+m+"m "+s+"s";
 }
 else if(current >= startTime && current <= endTime){
     box.innerHTML = "🟢 Exam is Going On";
