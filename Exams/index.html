@@ -278,13 +278,13 @@ else if(now >= switch2){
 var textBox = document.getElementById("examDateText");
 
 if(now >= switch2){
-    textBox.innerHTML = "Tomorrow's SA2 Exam :<br>" + examDate;
+    textBox.innerHTML = "Today's SA2 Exam :<br>" + examDate;
 }
 else if(now.toDateString() === new Date(startTime).toDateString()){
     textBox.innerHTML = "Today's SA2 Exam :<br>" + examDate;
 }
 else{
-    textBox.innerHTML = "Tomorrow's SA2 Exam :<br>" + examDate;
+    textBox.innerHTML = "Today's SA2 Exam :<br>" + examDate;
 }
 
 // SET SUBJECTS
