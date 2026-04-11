@@ -32,26 +32,27 @@ body{
     0%{ background-position: 0% 0%; }
     100%{ background-position: 100% 0%; }
 }
-/* HEADER */
+
+/* ✅ HEADER FIXED */
 .marquee{
     background:#00008B;
     color:#ffffff;
-    padding:14px;
+    padding:22px 10px;
     font-weight:bold;
-    font-size:28px;
+    font-size:30px;
     overflow:hidden;
-    white-space:nowrap;
     position:relative;
+    height:70px;
+    display:flex;
+    align-items:center;
 }
+
 .marquee-content{
-    display:inline-block;
+    position:absolute;
     white-space:nowrap;
-    animation: smoothScroll 20s linear infinite;
+    will-change: transform;
 }
-@keyframes smoothScroll{
-    0%{ transform: translateX(100%); }
-    100%{ transform: translateX(-100%); }
-}
+
 /* SECTION */
 .section-marquee{
     width:92%;
@@ -84,6 +85,11 @@ body{
     display:inline-block;
     padding-left:100%;
     animation: scroll 12s linear infinite;
+}
+
+@keyframes scroll{
+    0%{ transform: translateX(0); }
+    100%{ transform: translateX(-100%); }
 }
 
 /* LAYOUT */
@@ -132,19 +138,17 @@ body{
     background:#ffffffcc;
 }
 
-/* 🔴 UPCOMING EXAM CARD */
 .red-card{
     background:red;
-    border-left:4px solid #000; /* thinner */
+    border-left:4px solid #000;
     color:#fff;
 }
 
-/* TABLE WRAPPER */
+/* TABLE */
 .table-wrapper{
     overflow-x:auto;
 }
 
-/* TABLE */
 .card table{
     background:#fff;
     color:#000;
@@ -154,14 +158,13 @@ body{
     min-width:500px;
 }
 
-/* 🔹 VERY THIN SUBTLE BORDERS */
 .exam-table th,
 .exam-table td{
-    border:0.5px solid #999;  /* very thin */
+    border:0.5px solid #999;
 }
 
 .instruction-table td{
-    border:0.5px solid #bbb;  /* lighter */
+    border:0.5px solid #bbb;
 }
 
 th{
@@ -177,10 +180,13 @@ td{
     background:#d4edda;
 }
 
-/* MOBILE */
+/* ✅ MOBILE FIX */
 @media(max-width:600px){
-
-    .marquee{ font-size:18px; }
+    .marquee{
+        font-size:18px;
+        height:55px;
+        padding:10px;
+    }
     .section-marquee span{ font-size:18px; }
     .date{ font-size:16px; }
     .timer-box{ font-size:15px; }
@@ -211,7 +217,9 @@ td{
 <body>
 
 <div class="marquee">
-<span>📘 SSC PUBLIC EXAMINATIONS, MARCH 2026 - TELANGANA</span>
+    <div class="marquee-content" id="marqueeText">
+        📘 SSC PUBLIC EXAMINATIONS, MARCH 2026 - TELANGANA
+    </div>
 </div>
 
 <div class="container">
@@ -263,7 +271,6 @@ td{
 </div>
 </div>
 
-<!-- BACK BUTTON -->
 <div style="text-align:center; margin-top:20px;">
     <a href="../" class="back-btn">⬅ Back to Exams Page</a>
 </div>
@@ -276,6 +283,7 @@ td{
 
 <script>
 
+/* TIMER */
 var examDate = new Date("April 13, 2026 09:30:00");
 var endTime = new Date("April 13, 2026 12:30:00");
 
@@ -321,6 +329,24 @@ else{
 }
 
 },1000);
+
+/* MARQUEE SCRIPT */
+const marquee = document.getElementById("marqueeText");
+
+let position = window.innerWidth;
+
+function animateMarquee(){
+    position -= 1.2;
+
+    if(position < -marquee.offsetWidth){
+        position = window.innerWidth;
+    }
+
+    marquee.style.transform = `translateX(${position}px)`;
+    requestAnimationFrame(animateMarquee);
+}
+
+animateMarquee();
 
 </script>
 
