@@ -266,7 +266,11 @@ td{
 </div>
 
 <script>
-
+<script>
+if (window.location.pathname.endsWith("index.html")) {
+    window.location.replace(window.location.pathname.replace("index.html", ""));
+}
+</script>
 var examDate = new Date("April 13, 2026 09:30:00");
 var endTime = new Date("April 13, 2026 12:30:00");
 
