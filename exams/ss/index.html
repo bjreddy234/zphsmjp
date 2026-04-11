@@ -33,7 +33,7 @@ body{
     100%{ background-position: 100% 0%; }
 }
 
-/* ✅ HEADER FIXED */
+/* HEADER FIXED */
 .marquee{
     background:#00008B;
     color:#ffffff;
@@ -180,7 +180,7 @@ td{
     background:#d4edda;
 }
 
-/* ✅ MOBILE FIX */
+/* MOBILE */
 @media(max-width:600px){
     .marquee{
         font-size:18px;
@@ -330,13 +330,13 @@ else{
 
 },1000);
 
-/* MARQUEE SCRIPT */
+/* ✅ SPEED INCREASED HERE */
 const marquee = document.getElementById("marqueeText");
 
 let position = window.innerWidth;
 
 function animateMarquee(){
-    position -= 1.2;
+    position -= 1.8;   // 🔥 increased speed
 
     if(position < -marquee.offsetWidth){
         position = window.innerWidth;
