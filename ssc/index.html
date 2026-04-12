@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 
 <html lang="en">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SSC Exam - 13-04-2026 </title>
+<title>SSC Exams Announcement</title>
 
 <style>
 body{
@@ -12,7 +13,7 @@ body{
     background: linear-gradient(135deg,#eef2f3,#dfe9f3);
 }
 
-/* Slide Container */
+/* Slide */
 .slide{
     width:95%;
     max-width:900px;
@@ -24,55 +25,78 @@ body{
     text-align:center;
 }
 
-/* ===== GLOW TEXT ===== */
+/* Glow Text */
 .glow-container{
     display:flex;
     justify-content:center;
     align-items:center;
     height:70px;
 }
-
 .moving-glow-text{
     font-size:clamp(20px,5vw,34px);
     font-weight:bold;
     color:#ffffff;
-
-    text-shadow: 
-        0 0 5px #00e5ff,
-        0 0 10px #00e5ff,
-        0 0 20px #00e5ff,
-        0 0 40px #00bcd4;
-
+    text-shadow:0 0 5px #00e5ff,0 0 10px #00e5ff,0 0 20px #00e5ff,0 0 40px #00bcd4;
     animation: moveText 5s infinite alternate;
 }
-
 @keyframes moveText {
     0% { transform: translateX(-30px); }
     100% { transform: translateX(30px); }
 }
 
+/* Smooth scroll */
+.scroll-box{
+    overflow:hidden;
+    white-space:nowrap;
+}
+.scroll-text{
+    display:inline-block;
+    padding-left:100%;
+    animation: scrollLeft 12s linear infinite;
+}
+@keyframes scrollLeft{
+    0%{ transform:translateX(0); }
+    100%{ transform:translateX(-100%); }
+}
+
 /* Headings */
-h1{
-    font-size:clamp(18px,4vw,26px);
-    color:#002b5c;
-    margin:10px 0;
-}
+h1{font-size:clamp(18px,4vw,26px);color:#002b5c;}
+h2{font-size:clamp(16px,4vw,22px);color:#6a1b9a;}
 
-h2{
-    font-size:clamp(16px,4vw,22px);
-    color:#6a1b9a;
-    margin:10px 0;
-}
-
-/* TODAY'S EXAM BOX */
+/* 🔥 LED BORDER */
 .exam-box{
     background:#0d47a1;
-    color:#ffffff;
-    padding:12px;
-    margin:12px 0;
+    color:#fff;
+    padding:14px;
+    margin:14px 0;
+    border-radius:10px;
     font-weight:bold;
-    border-radius:6px;
     font-size:clamp(14px,4vw,20px);
+
+    position:relative;
+}
+
+.exam-box::before{
+    content:"";
+    position:absolute;
+    inset:-3px;
+    border-radius:12px;
+    background: linear-gradient(90deg, red, yellow, lime, cyan, blue, magenta, red);
+    background-size:300% 100%;
+    animation: ledMove 3s linear infinite;
+    z-index:-1;
+}
+
+@keyframes ledMove{
+    0%{background-position:0%;}
+    100%{background-position:100%;}
+}
+
+/* Timer */
+.timer{
+    font-weight:bold;
+    margin:10px 0;
+    font-size:18px;
 }
 
 /* Highlight */
@@ -83,32 +107,25 @@ h2{
     margin:10px 0;
     font-weight:bold;
     border-radius:5px;
-    font-size:clamp(14px,4vw,18px);
 }
 
-/* Notice */
 .notice{
     color:#0d47a1;
     font-weight:bold;
-    font-size:clamp(14px,4vw,18px);
 }
 
-/* List */
 .list{
     text-align:left;
     margin-top:10px;
     color:#b71c1c;
     font-weight:bold;
-    font-size:clamp(14px,4vw,18px);
 }
 
-/* Footer */
 .footer{
     text-align:right;
     margin-top:30px;
     font-weight:bold;
     color:#002b5c;
-    font-size:clamp(14px,4vw,18px);
 }
 </style>
 
@@ -116,118 +133,116 @@ h2{
 
 <body>
 
-<!-- SLIDE 1 -->
-
 <div class="slide">
 
-```
-<!-- GLOW MOVING TEXT -->
 <div class="glow-container">
-    <div class="moving-glow-text" id="greeting">GOOD MORNING TO ALL</div>
+<div class="moving-glow-text" id="greeting">GOOD MORNING TO ALL</div>
 </div>
 
-<marquee behavior="alternate">
-    <h1>SSC PUBLIC EXAMINATIONS – MARCH 2026</h1>
-</marquee>
+<div class="scroll-box">
+<div class="scroll-text">
+<h1>SSC PUBLIC EXAMINATIONS – MARCH 2026</h1>
+</div>
+</div>
 
 <h2>CENTER NO AND NAME : 24016 – ZPHS MUJAHIDPUR</h2>
 
 <div class="exam-box" id="examText"></div>
 
+<div class="timer" id="timerBox"></div>
+
 <div class="highlight">
-    TIMINGS : 9.30 AM TO 12.30 PM
+TIMINGS : 9.30 AM TO 12.30 PM
 </div>
 
 <p class="notice">
-    ** All the invigilators are requested to attend the Exam center on or before 8.30 AM **
+** All the invigilators are requested to attend before 8.30 AM **
 </p>
 
-<div class="highlight">
-    Exam Duty – Free Teachers' List
-</div>
+<div class="highlight">Exam Duty – Free Teachers' List</div>
 
 <div class="list">
-    1) Sri. Sri. N. Ramulu, SA(Social)<br>
-    2) Sri. Sri. P. Ambaiah, SA(Eng)<br>
-    3) Sri. Sri. E. Prabhakar, SA(Eng)<br>
-</div>
-```
-
+1) Sri. N. Ramulu, SA(Social)<br>
+2) Sri. P. Ambaiah, SA(Eng)<br>
+3) Sri. E. Prabhakar, SA(Eng)<br>
 </div>
 
-<!-- SLIDE 2 -->
+</div>
 
 <div class="slide">
-
-```
-<marquee behavior="alternate" id="footerMarquee">
-    <h1 id="footerText">ALL THE BEST AND HAVE A GREAT DAY AHEAD</h1>
-</marquee>
+<div class="scroll-box">
+<div class="scroll-text">
+<h1 id="footerText">ALL THE BEST AND HAVE A GREAT DAY AHEAD</h1>
+</div>
+</div>
 
 <div class="footer">
-    Regards,<br><br>
-    CS & DO – 24016 –<br>
-    ZPHS MUJAHIDPUR
+Regards,<br><br>
+CS & DO – 24016 –<br>
+ZPHS MUJAHIDPUR
 </div>
-```
-
 </div>
 
 <script>
 
-/* 🔹 GREETING BASED ON TIME */
-let hour = new Date().getHours();
-let greeting = document.getElementById("greeting");
+/* GREETING */
+let hour=new Date().getHours();
+let greeting=document.getElementById("greeting");
 
-if(hour >=5 && hour <12){
-    greeting.innerHTML = "GOOD MORNING TO ALL";
+if(hour>=5 && hour<12) greeting.innerHTML="GOOD MORNING TO ALL";
+else if(hour<17) greeting.innerHTML="GOOD AFTERNOON TO ALL";
+else if(hour<21) greeting.innerHTML="GOOD EVENING TO ALL";
+else greeting.innerHTML="GOOD NIGHT TO ALL";
+
+/* DATE LOGIC */
+let now=new Date();
+let examStart=new Date("April 13, 2026 09:30:00");
+let examEnd=new Date("April 13, 2026 12:30:00");
+let startDay=new Date(examStart); startDay.setHours(0,1,0,0);
+
+let examText=document.getElementById("examText");
+let timerBox=document.getElementById("timerBox");
+
+/* TEXT */
+if(now<startDay){
+ examText.innerHTML="TOMORROW'S EXAM (13-04-2026) : SOCIAL STUDIES";
 }
-else if(hour >=12 && hour <17){
-    greeting.innerHTML = "GOOD AFTERNOON TO ALL";
-}
-else if(hour >=17 && hour <21){
-    greeting.innerHTML = "GOOD EVENING TO ALL";
-}
-else{
-    greeting.innerHTML = "GOOD NIGHT TO ALL";
-}
-
-/* 🔹 DATE LOGIC */
-let now = new Date();
-
-let examDate = new Date("April 13, 2026 09:30:00");
-let examEnd = new Date("April 13, 2026 12:30:00");
-let nextExam = new Date("April 15, 2026 09:30:00");
-
-let examStartDay = new Date(examDate);
-examStartDay.setHours(0,1,0,0);
-
-let examText = document.getElementById("examText");
-
-/* BEFORE 13 APRIL */
-if(now < examStartDay){
-    examText.innerHTML = "TOMORROW'S EXAM (13-04-2026) : SOCIAL STUDIES";
-}
-
-/* ON 13 APRIL */
-else if(now >= examStartDay && now <= examEnd){
-    examText.innerHTML = "TODAY'S EXAM (13-04-2026) : SOCIAL STUDIES";
-}
-
-/* AFTER EXAM */
-else{
-    examText.innerHTML = "NEXT UPCOMING EXAM (15-04-2026)";
-}
-
-/* 🔹 FOOTER TEXT CHANGE */
-let footerText = document.getElementById("footerText");
-
-if(now < examStartDay){
-    footerText.innerHTML = "ALL THE BEST AND HAVE A GREAT DAY AHEAD";
+else if(now<=examEnd){
+ examText.innerHTML="TODAY'S EXAM (13-04-2026) : SOCIAL STUDIES";
 }
 else{
-    footerText.innerHTML = "ALL THE BEST AND HAVE A GREAT DAY AHEAD";
+ examText.innerHTML="NEXT UPCOMING EXAM (15-04-2026)";
 }
+
+/* TIMER */
+setInterval(function(){
+
+let nowT=new Date().getTime();
+let startT=examStart.getTime();
+let endT=examEnd.getTime();
+
+if(nowT<startT){
+
+ let diff=startT-nowT;
+ let h=Math.floor(diff/(1000*60*60));
+ let m=Math.floor((diff%(1000*60*60))/(1000*60));
+ let s=Math.floor((diff%(1000*60))/1000);
+
+ timerBox.innerHTML="⏳ Starts In: "+h+"h "+m+"m "+s+"s";
+
+}
+else if(nowT<=endT){
+
+ timerBox.innerHTML="🟢 EXAM IS GOING ON";
+
+}
+else{
+
+ timerBox.innerHTML="✅ EXAM IS OVER";
+
+}
+
+},1000);
 
 </script>
 
