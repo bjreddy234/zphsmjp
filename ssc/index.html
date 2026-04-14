@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -104,12 +105,37 @@ h2{font-size:clamp(16px,4vw,22px);color:#6a1b9a;}
     border-radius:5px;
 }
 
+/* ✅ TABLE STYLE */
+.exam-table{
+    width:100%;
+    border-collapse:collapse;
+    margin:12px 0;
+    font-size:clamp(14px,3.5vw,18px);
+}
+
+.exam-table th{
+    background:#0d47a1;
+    color:#fff;
+    padding:8px;
+    border:1px solid #ddd;
+}
+
+.exam-table td{
+    padding:8px;
+    border:1px solid #ddd;
+    text-align:left;
+}
+
+.exam-table tr:nth-child(even){
+    background:#f5f5f5;
+}
+
 .notice{
     color:#0d47a1;
     font-weight:bold;
 }
 
-/* 🔴 FIXED MARQUEE */
+/* 🔴 MARQUEE */
 .marquee-box{
     background:red;
     color:#fff;
@@ -125,18 +151,12 @@ h2{font-size:clamp(16px,4vw,22px);color:#6a1b9a;}
     padding:12px 20px;
     font-weight:bold;
     font-size:clamp(14px,4vw,20px);
-
     animation: scrollLeftSmooth 12s linear infinite;
 }
 
-/* Smooth right → left */
 @keyframes scrollLeftSmooth{
-    0%{
-        transform: translateX(100%);
-    }
-    100%{
-        transform: translateX(-100%);
-    }
+    0%{ transform: translateX(100%); }
+    100%{ transform: translateX(-100%); }
 }
 
 .footer{
@@ -173,11 +193,34 @@ h2{font-size:clamp(16px,4vw,22px);color:#6a1b9a;}
 TIMINGS : 9.30 AM TO 11.30 AM
 </div>
 
+<!-- ✅ INSERTED TABLE -->
+<table class="exam-table">
+<tr>
+<th>Paper Code</th>
+<th>Name of the Exam</th>
+</tr>
+<tr>
+<td>61 E</td>
+<td>IT / ITES</td>
+</tr>
+<tr>
+<td>63 E</td>
+<td>Beauty and Wellness</td>
+</tr>
+<tr>
+<td>65 E</td>
+<td>Retail</td>
+</tr>
+<tr>
+<td>75 E</td>
+<td>Agriculture</td>
+</tr>
+</table>
+
 <p class="notice">
 ** All invigilators are requested to report at the center by 8.30 AM **
 </p>
 
-<!-- 🔴 FIXED MARQUEE -->
 <div class="marquee-box">
   <div class="marquee-text">
     All invigilators are requested to attend. 12 rooms and 2 relievers are arranged for tomorrow’s exam.
@@ -222,7 +265,6 @@ startDay.setHours(0,1,0,0);
 let examText=document.getElementById("examText");
 let timerBox=document.getElementById("timerBox");
 
-/* TEXT */
 if(now<startDay){
  examText.innerHTML="TOMORROW'S EXAM (15-04-2026) : VOCATIONAL COURSE (THEORY)";
 }
@@ -233,7 +275,6 @@ else{
  examText.innerHTML="EXAM COMPLETED (15-04-2026)";
 }
 
-/* TIMER */
 setInterval(function(){
 
 let nowT=new Date().getTime();
@@ -241,24 +282,17 @@ let startT=examStart.getTime();
 let endT=examEnd.getTime();
 
 if(nowT<startT){
-
  let diff=startT-nowT;
  let h=Math.floor(diff/(1000*60*60));
  let m=Math.floor((diff%(1000*60*60))/(1000*60));
  let s=Math.floor((diff%(1000*60))/1000);
-
  timerBox.innerHTML="⏳ Starts In: "+h+"h "+m+"m "+s+"s";
-
 }
 else if(nowT<=endT){
-
  timerBox.innerHTML="🟢 EXAM IS GOING ON";
-
 }
 else{
-
  timerBox.innerHTML="✅ EXAM IS OVER";
-
 }
 
 },1000);
