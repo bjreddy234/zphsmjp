@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -43,7 +42,7 @@ body{
     100% { transform: translateX(30px); }
 }
 
-/* Smooth scroll */
+/* Scroll Header */
 .scroll-box{
     overflow:hidden;
     white-space:nowrap;
@@ -62,7 +61,7 @@ body{
 h1{font-size:clamp(18px,4vw,26px);color:#002b5c;}
 h2{font-size:clamp(16px,4vw,22px);color:#6a1b9a;}
 
-/* 🔥 LED BORDER */
+/* LED BOX */
 .exam-box{
     background:#0d47a1;
     color:#fff;
@@ -71,10 +70,8 @@ h2{font-size:clamp(16px,4vw,22px);color:#6a1b9a;}
     border-radius:10px;
     font-weight:bold;
     font-size:clamp(14px,4vw,20px);
-
     position:relative;
 }
-
 .exam-box::before{
     content:"";
     position:absolute;
@@ -85,7 +82,6 @@ h2{font-size:clamp(16px,4vw,22px);color:#6a1b9a;}
     animation: ledMove 3s linear infinite;
     z-index:-1;
 }
-
 @keyframes ledMove{
     0%{background-position:0%;}
     100%{background-position:100%;}
@@ -113,11 +109,34 @@ h2{font-size:clamp(16px,4vw,22px);color:#6a1b9a;}
     font-weight:bold;
 }
 
-.list{
-    text-align:left;
-    margin-top:10px;
-    color:#b71c1c;
+/* 🔴 FIXED MARQUEE */
+.marquee-box{
+    background:red;
+    color:#fff;
+    overflow:hidden;
+    width:100%;
+    border-radius:8px;
+    margin:12px 0;
+}
+
+.marquee-text{
+    display:inline-block;
+    white-space:nowrap;
+    padding:12px 20px;
     font-weight:bold;
+    font-size:clamp(14px,4vw,20px);
+
+    animation: scrollLeftSmooth 12s linear infinite;
+}
+
+/* Smooth right → left */
+@keyframes scrollLeftSmooth{
+    0%{
+        transform: translateX(100%);
+    }
+    100%{
+        transform: translateX(-100%);
+    }
 }
 
 .footer{
@@ -135,7 +154,7 @@ h2{font-size:clamp(16px,4vw,22px);color:#6a1b9a;}
 <div class="slide">
 
 <div class="glow-container">
-<div class="moving-glow-text" id="greeting">GOOD MORNING TO ALL</div>
+<div class="moving-glow-text" id="greeting">WELCOME</div>
 </div>
 
 <div class="scroll-box">
@@ -151,19 +170,18 @@ h2{font-size:clamp(16px,4vw,22px);color:#6a1b9a;}
 <div class="timer" id="timerBox"></div>
 
 <div class="highlight">
-TIMINGS : 9.30 AM TO 12.30 PM
+TIMINGS : 9.30 AM TO 11.30 AM
 </div>
 
 <p class="notice">
 ** All the invigilators are requested to attend before 8.30 AM **
 </p>
 
-<div class="highlight">Exam Duty – Free Teachers' List</div>
-
-<div class="list">
-1) Sri. N. Ramulu, SA(Social)<br>
-2) Sri. P. Ambaiah, SA(Eng)<br>
-3) Sri. E. Prabhakar, SA(Eng)<br>
+<!-- 🔴 FIXED MARQUEE -->
+<div class="marquee-box">
+  <div class="marquee-text">
+    All the invigilators are requested to attend. 12 Rooms + 2 Relievers for tomorrow's exam.
+  </div>
 </div>
 
 </div>
@@ -171,7 +189,7 @@ TIMINGS : 9.30 AM TO 12.30 PM
 <div class="slide">
 <div class="scroll-box">
 <div class="scroll-text">
-<h1 id="footerText">ALL THE BEST AND HAVE A GREAT DAY!</h1>
+<h1>ALL THE BEST AND HAVE A GREAT DAY AHEAD</h1>
 </div>
 </div>
 
@@ -184,44 +202,35 @@ ZPHS MUJAHIDPUR
 
 <script>
 
-/* ✅ UPDATED GREETING AS PER YOUR TIMINGS */
+/* Greeting */
 let hour=new Date().getHours();
 let greeting=document.getElementById("greeting");
 
-if(hour>=0 && hour<4){
-    greeting.innerHTML="GOOD NIGHT TO ALL";
-}
-else if(hour>=4 && hour<12){
-    greeting.innerHTML="GOOD MORNING TO ALL";
-}
-else if(hour>=12 && hour<16){
-    greeting.innerHTML="GOOD AFTERNOON TO ALL";
-}
-else if(hour>=16 && hour<22){
-    greeting.innerHTML="GOOD EVENING TO ALL";
-}
-else{
-    greeting.innerHTML="GOOD NIGHT TO ALL";
-}
+if(hour<12) greeting.innerHTML="GOOD MORNING TO ALL";
+else if(hour<16) greeting.innerHTML="GOOD AFTERNOON TO ALL";
+else greeting.innerHTML="GOOD EVENING TO ALL";
 
 /* DATE LOGIC */
 let now=new Date();
-let examStart=new Date("April 13, 2026 09:30:00");
-let examEnd=new Date("April 13, 2026 12:30:00");
-let startDay=new Date(examStart); startDay.setHours(0,1,0,0);
+
+let examStart=new Date("April 15, 2026 09:30:00");
+let examEnd=new Date("April 15, 2026 11:30:00");
+
+let startDay=new Date(examStart); 
+startDay.setHours(0,1,0,0);
 
 let examText=document.getElementById("examText");
 let timerBox=document.getElementById("timerBox");
 
 /* TEXT */
 if(now<startDay){
- examText.innerHTML="TOMORROW'S EXAM (13-04-2026) : SOCIAL STUDIES";
+ examText.innerHTML="TOMORROW'S EXAM (15-04-2026) : VOCATIONAL COURSE (THEORY)";
 }
 else if(now<=examEnd){
- examText.innerHTML="TODAY'S EXAM (13-04-2026) : SOCIAL STUDIES";
+ examText.innerHTML="TODAY'S EXAM (15-04-2026) : VOCATIONAL COURSE (THEORY)";
 }
 else{
- examText.innerHTML="NEXT UPCOMING EXAM (15-04-2026)";
+ examText.innerHTML="EXAM COMPLETED (15-04-2026)";
 }
 
 /* TIMER */
