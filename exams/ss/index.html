@@ -1,169 +1,74 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SSC PUBLIC EXAMS - MARCH 2026</title>
+<title>SSC EXAM - 16 APRIL 2026</title>
 
 <style>
 
-/* 🌈 LIGHT RAINBOW BACKGROUND */
 body{
     margin:0;
-    font-family: 'Segoe UI', sans-serif;
-
-    background: linear-gradient(90deg,
-        #ffcccc,
-        #ffe5cc,
-        #ffffcc,
-        #e6ffcc,
-        #ccffff,
-        #cce0ff,
-        #e0ccff
-    );
-
-    background-size: 300% 100%;
-    animation: rainbowMove 35s linear infinite;
-    color:#000;
+    font-family: Arial, sans-serif;
+    background:#ffffff;
+    text-align:center;
 }
 
-@keyframes rainbowMove{
-    0%{ background-position: 0% 0%; }
-    100%{ background-position: 100% 0%; }
-}
-
-/* HEADER FIXED */
+/* HEADER */
 .marquee{
-    background:#00008B;
-    color:#ffffff;
-    padding:22px 10px;
+    background:#000080;
+    color:#fff;
+    padding:15px;
+    font-size:22px;
     font-weight:bold;
-    font-size:30px;
     overflow:hidden;
     position:relative;
-    height:70px;
+    height:60px;
     display:flex;
     align-items:center;
 }
 
-.marquee-content{
+.marquee span{
     position:absolute;
     white-space:nowrap;
-    will-change: transform;
+    animation: moveHeader 12s linear infinite;
 }
 
-/* SECTION */
-.section-marquee{
-    width:92%;
-    margin:0 auto;
-    overflow:hidden;
-}
-.section-marquee span{
-    display:block;
-    text-align:center;
-    font-size:22px;
-    font-weight:800;
-    animation: bounce 4s ease-in-out infinite alternate;
-}
-
-@keyframes bounce{
-    0%{ transform: translateX(-10%); }
-    100%{ transform: translateX(10%); }
-}
-
-/* FOOTER */
-.footer-marquee{
-    background:#000;
-    color:#fff;
-    overflow:hidden;
-    white-space:nowrap;
-    font-size:22px;
-    margin-top:15px;
-}
-.footer-marquee span{
-    display:inline-block;
-    padding-left:100%;
-    animation: scroll 12s linear infinite;
-}
-
-@keyframes scroll{
-    0%{ transform: translateX(0); }
+@keyframes moveHeader{
+    0%{ transform: translateX(100%); }
     100%{ transform: translateX(-100%); }
 }
 
-/* LAYOUT */
-.container{
-    max-width:1100px;
-    margin:auto;
-    padding:15px;
-    text-align:center;
+/* CARD */
+.card{
+    margin:20px auto;
+    max-width:800px;
+    background:#fff;
+    border-radius:10px;
+    box-shadow:0 0 15px rgba(0,0,0,0.2);
+    padding:20px;
 }
 
-.row{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:20px;
-    flex-wrap:wrap;
-    margin:20px 0;
-}
-
-/* DATE */
-.date{
-    padding:10px 20px;
-    border-radius:30px;
-    background:#4a4a4a;
-    font-size:20px;
+.title{
+    font-size:24px;
     font-weight:bold;
-    color:#fff;
+    color:#000080;
 }
 
-/* TIMER */
-.timer-box{
-    padding:10px 18px;
-    border-radius:30px;
-    background:#ffffff;
-    color:#000;
+.notice{
+    background:red;
+    color:#fff;
+    padding:12px;
     font-size:18px;
     font-weight:bold;
+    border-radius:8px;
+    margin:15px 0;
 }
 
-/* CARDS */
-.card{
-    border-radius:10px;
-    padding:10px;
-    margin:15px auto;
-    max-width:820px;
-    background:#ffffffcc;
-}
-
-.red-card{
-    background:red;
-    border-left:4px solid #000;
-    color:#fff;
-}
-
-/* TABLE */
-.table-wrapper{
-    overflow-x:auto;
-}
-
-.card table{
-    background:#fff;
-    color:#000;
+table{
     width:100%;
     border-collapse:collapse;
-    font-size:16px;
-    min-width:500px;
-}
-
-.exam-table th,
-.exam-table td{
-    border:0.5px solid #999;
-}
-
-.instruction-table td{
-    border:0.5px solid #bbb;
 }
 
 th{
@@ -171,43 +76,57 @@ th{
     color:#fff;
 }
 
-td{
+td,th{
+    border:1px solid #999;
+    padding:10px;
     font-weight:bold;
 }
 
-.highlight{
-    background:#d4edda;
-}
-
-/* MOBILE */
-@media(max-width:600px){
-    .marquee{
-        font-size:18px;
-        height:55px;
-        padding:10px;
-    }
-    .section-marquee span{ font-size:18px; }
-    .date{ font-size:16px; }
-    .timer-box{ font-size:15px; }
-    .card table{ font-size:14px; }
-}
-
-/* BACK BUTTON */
-.back-btn{
-    display:inline-block;
-    padding:10px 20px;
-    background:#000080;
-    color:#fff;
-    text-decoration:none;
-    font-size:16px;
+.timer{
+    margin:15px 0;
+    font-size:20px;
     font-weight:bold;
-    border-radius:30px;
-    box-shadow:0 0 10px #000;
 }
 
-.back-btn:hover{
-    background:#ff0000;
-    box-shadow:0 0 15px red, 0 0 25px yellow;
+/* FINAL SCREEN */
+.final-marquee{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+
+    background: linear-gradient(270deg, #ff6a00, #ff00cc, #00c9ff, #92fe9d);
+    background-size: 800% 800%;
+    animation: gradientMove 12s ease infinite;
+
+    overflow:hidden;
+}
+
+@keyframes gradientMove{
+    0%{ background-position:0% 50%; }
+    50%{ background-position:100% 50%; }
+    100%{ background-position:0% 50%; }
+}
+
+/* TEXT */
+.final-marquee span{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    white-space:nowrap;
+
+    font-size:32px;
+    font-weight:bold;
+    color:#000;
+
+    animation: finalMove 12s linear infinite;
+}
+
+@keyframes finalMove{
+    0%{ transform: translate(100%, -50%); }
+    100%{ transform: translate(-100%, -50%); }
 }
 
 </style>
@@ -216,166 +135,95 @@ td{
 <body>
 
 <div class="marquee">
-    <div class="marquee-content" id="marqueeText">
-        📘 SSC PUBLIC EXAMINATIONS, MARCH 2026 - TELANGANA
-    </div>
+    <span>📘 SSC PUBLIC EXAMINATIONS – MARCH 2026 (TELANGANA)</span>
 </div>
 
-<div class="container">
+<div id="mainContent">
 
-<div class="row">
-    <div class="date" id="examDateText"></div>
-    <div class="timer-box" id="countdown"></div>
+<div class="card">
+
+<div class="title">
+📅 EXAM ON: 16 APRIL 2026 (THURSDAY)
 </div>
 
-<div class="card red-card">
-<div class="section-marquee">
-<span style="color:#fff;">📘 TODAY'S - EXAM</span>
+<div class="notice">
+📢 The examination will be conducted strictly as per the prescribed timetable.
 </div>
 
-<div class="table-wrapper">
-<table class="exam-table">
+<div class="timer" id="countdown"></div>
+
+<table>
 <tr>
 <th>Date</th>
 <th>Subject</th>
-<th>Paper Codes</th>
+<th>Paper Code</th>
 <th>Time</th>
 </tr>
 
-<tr class="highlight">
-<td id="dateCell"></td>
-<td>Social Studies</td>
-<td>21 E & 22 E<br>21 T & 22 T<br>21 A & 22 A<br>21 K & 22 K<br>21 U & 22 U<br>21 H & 22 H <br>AND <br>21 M & 22 M</td>
-<td>9.30 AM to 12.30 PM</td>
+<tr>
+<td>16-04-2026</td>
+<td>OSSC Main Language Paper-II</td>
+<td>Sanskrit & Arabic (24 & 26)</td>
+<td>9:30 AM to 12:30 PM</td>
 </tr>
+
 </table>
-</div>
+
 </div>
 
-<div class="card red-card">
-<div class="section-marquee">
-<span style="color:#fff;">⚠ IMPORTANT INSTRUCTIONS</span>
 </div>
 
-<div class="table-wrapper">
-<table class="instruction-table">
-<tr><td style="text-align:left;">1) Use a 24-page booklet.</td></tr>
-<tr><td style="text-align:left;">2) Part B should be given at 12:00 PM.</td></tr>
-<tr><td style="text-align:left;">3) Maps should be provided along with the question paper.</td></tr>
-<tr><td style="text-align:left;">4) The main answer booklet number should be written on the map.</td></tr>
-<tr><td style="text-align:left;">5) The invigilator must sign on the map as well.</td></tr>
-<tr><td style="text-align:left;">6) Students should not write the hall ticket number anywhere except on the question paper (on each page).</td></tr>
-<tr><td style="text-align:left;">7) The Chief Superintendents shall record the serial numbers of question papers allotted to each room, and the invigilators shall record the serial numbers of question papers issued to students in the prescribed proformas.</td></tr>
-</table>
-</div>
-</div>
-
-<div style="text-align:center; margin-top:20px;">
-    <a href="../" class="back-btn">⬅ Back to Exams Page</a>
-</div>
-
-<div class="footer-marquee">
-<span>✨ ALL THE BEST TO STUDENTS ✨</span>
-</div>
-
+<div id="finalScreen" class="final-marquee">
+    <span>
+        🙏 Thank You and Congratulations to all for conducting SSC Public Examinations smoothly and peacefully.
+    </span>
 </div>
 
 <script>
 
-/* TIMER */
-var examDate = new Date("April 13, 2026 09:30:00");
-var endTime = new Date("April 13, 2026 12:30:00");
+/* ✅ SAFE TIME FORMAT (NO BUG) */
+var startTime = new Date(2026, 3, 16, 9, 30, 0).getTime();   // April = 3
+var endTime   = new Date(2026, 3, 16, 12, 30, 0).getTime();
 
-var today = new Date();
-
-/* elements */
-var dateCell = document.getElementById("dateCell");
-var examDateText = document.getElementById("examDateText");
-var subjectCell = document.querySelector(".exam-table td:nth-child(2)");
-var paperCell = document.querySelector(".exam-table td:nth-child(3)");
-var timeCell = document.querySelector(".exam-table td:nth-child(4)");
-var heading = document.querySelector(".section-marquee span");
-var instructionCard = document.querySelectorAll(".card.red-card")[1];
-
-/* BEFORE 12:30 */
-if(today <= endTime){
-
-    dateCell.innerHTML = "13.04.2026";
-    examDateText.innerHTML = "Today's Exam:<br>13 April 2026";
-}
-
-/* AFTER 12:30 */
-else{
-
-    heading.innerHTML = "📘 NEXT - EXAM";
-
-    dateCell.innerHTML = "15.04.2026";
-    examDateText.innerHTML = "Next Upcoming Exam:<br>15 April 2026";
-
-    subjectCell.innerHTML = `
-    OSSC Main Language Paper-I<br><br>
-    SSC Vocational Course (Theory)
-    `;
-
-    paperCell.innerHTML = `
-    Sanskrit & Arabic (23 & 25)<br><br>
-    (31 to 93)
-    `;
-
-    timeCell.innerHTML = `
-    9.30 AM to 12.30 PM<br><br>
-    9.30 AM to 11.30 AM
-    `;
-
-    instructionCard.style.display = "none";
-}
-
-/* TIMER */
 setInterval(function(){
 
-var now = new Date().getTime();
-var start = examDate.getTime();
-var end = endTime.getTime();
-var box = document.getElementById("countdown");
+    var now = new Date().getTime();
 
-if(now < start){
+    var main = document.getElementById("mainContent");
+    var header = document.querySelector(".marquee");
+    var final = document.getElementById("finalScreen");
+    var box = document.getElementById("countdown");
 
-    var distance = start - now;
+    if(now < startTime){
 
-    var days = Math.floor(distance / (1000*60*60*24));
-    var hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
-    var minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
-    var seconds = Math.floor((distance % (1000*60)) / 1000);
+        var d = startTime - now;
 
-    box.innerHTML = "⏳ Starts In: "
-        + days + "d "
-        + hours + "h "
-        + minutes + "m "
-        + seconds + "s";
+        var h = Math.floor((d % (1000*60*60*24)) / (1000*60*60));
+        var m = Math.floor((d % (1000*60*60)) / (1000*60));
+        var s = Math.floor((d % (1000*60)) / 1000);
 
-}
-else if(now >= start && now <= end){
-    box.innerHTML = "🟢 Exam is Going On";
-}
-else{
-    box.innerHTML = "➡ Next Exam Coming";
-}
+        box.innerHTML = "⏳ Exam starts in: " + h + "h " + m + "m " + s + "s";
+    }
+
+    else if(now >= startTime && now < endTime){
+
+        var d = endTime - now;
+
+        var h = Math.floor((d % (1000*60*60*24)) / (1000*60*60));
+        var m = Math.floor((d % (1000*60*60)) / (1000*60));
+        var s = Math.floor((d % (1000*60)) / 1000);
+
+        box.innerHTML = "🟢 Exam is going on | Ends in: " + h + "h " + m + "m " + s + "s";
+    }
+
+    else{
+
+        main.style.display = "none";
+        header.style.display = "none";
+        final.style.display = "block";
+    }
 
 },1000);
-
-/* MARQUEE SPEED */
-const marquee = document.getElementById("marqueeText");
-let position = window.innerWidth;
-
-function animateMarquee(){
-    position -= 1.8;
-    if(position < -marquee.offsetWidth){
-        position = window.innerWidth;
-    }
-    marquee.style.transform = `translateX(${position}px)`;
-    requestAnimationFrame(animateMarquee);
-}
-animateMarquee();
 
 </script>
 
