@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,10 +49,19 @@ body{
     padding:20px;
 }
 
+/* TITLE (FIXED SINGLE LINE) */
 .title{
     font-size:24px;
     font-weight:bold;
     color:#000080;
+    white-space:nowrap;
+}
+
+/* MOBILE FIX */
+@media(max-width:600px){
+    .title{
+        font-size:18px;
+    }
 }
 
 .notice{
@@ -66,6 +74,7 @@ body{
     margin:15px 0;
 }
 
+/* TABLE */
 table{
     width:100%;
     border-collapse:collapse;
@@ -86,6 +95,25 @@ td,th{
     margin:15px 0;
     font-size:20px;
     font-weight:bold;
+}
+
+/* BACK BUTTON */
+.back-btn{
+    display:inline-block;
+    padding:10px 20px;
+    background:#000080;
+    color:#fff;
+    text-decoration:none;
+    font-size:16px;
+    font-weight:bold;
+    border-radius:30px;
+    box-shadow:0 0 10px #000;
+    transition:0.3s;
+}
+
+.back-btn:hover{
+    background:#ff0000;
+    box-shadow:0 0 15px red, 0 0 25px yellow;
 }
 
 /* FINAL SCREEN */
@@ -110,7 +138,7 @@ td,th{
     100%{ background-position:0% 50%; }
 }
 
-/* TEXT */
+/* FINAL TEXT */
 .final-marquee span{
     position:absolute;
     top:50%;
@@ -134,10 +162,12 @@ td,th{
 
 <body>
 
+<!-- HEADER -->
 <div class="marquee">
     <span>📘 SSC PUBLIC EXAMINATIONS – MARCH 2026 (TELANGANA)</span>
 </div>
 
+<!-- MAIN CONTENT -->
 <div id="mainContent">
 
 <div class="card">
@@ -169,10 +199,16 @@ td,th{
 
 </table>
 
+<!-- BACK BUTTON -->
+<div style="margin-top:20px;">
+    <a href="../index.html" class="back-btn">⬅ Back to Exams Page</a>
 </div>
 
 </div>
 
+</div>
+
+<!-- FINAL SCREEN -->
 <div id="finalScreen" class="final-marquee">
     <span>
         🙏 Thank You and Congratulations to all for conducting SSC Public Examinations smoothly and peacefully.
@@ -181,8 +217,8 @@ td,th{
 
 <script>
 
-/* ✅ SAFE TIME FORMAT (NO BUG) */
-var startTime = new Date(2026, 3, 16, 9, 30, 0).getTime();   // April = 3
+/* TIME SETTINGS */
+var startTime = new Date(2026, 3, 16, 9, 30, 0).getTime();
 var endTime   = new Date(2026, 3, 16, 12, 30, 0).getTime();
 
 setInterval(function(){
