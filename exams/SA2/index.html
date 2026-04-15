@@ -250,11 +250,11 @@ Classes I to IX
 
 var now = new Date();
 var switch1 = new Date("April 9, 2026 12:00:00");
-var switch2 = new Date("April 10, 2026 12:00:00");
+var switch2 = new Date("April 10, 2026 10:30:00");
 
 var examDate = "09 April 2026 (Thursday)";
 var startTime = new Date("April 9, 2026 09:00:00").getTime();
-var endTime = new Date("April 9, 2026 12:00:00").getTime();
+var endTime = new Date("April 9, 2026 10:30:00").getTime();
 
 var primarySubject = "First Language (Telugu / Urdu etc.)";
 var subjects = [
@@ -267,7 +267,7 @@ var subjects = [
 if(now >= switch1 && now < switch2){
     examDate = "10 April 2026 (Friday)";
     startTime = new Date("April 10, 2026 09:00:00").getTime();
-    endTime = new Date("April 10, 2026 12:00:00").getTime();
+    endTime = new Date("April 10, 2026 10:30:00").getTime();
     primarySubject = "English";
     subjects = [
         "Third Language (English)",
@@ -279,7 +279,7 @@ if(now >= switch1 && now < switch2){
 else if(now >= switch2 && now < new Date("April 11, 2026 12:00:00")){
     examDate = "11 April 2026 (Saturday)";
     startTime = new Date("April 11, 2026 09:00:00").getTime();
-    endTime = new Date("April 11, 2026 12:00:00").getTime();
+    endTime = new Date("April 11, 2026 10:30:00").getTime();
     primarySubject = "Mathematics";
     subjects = [
         "Social Studies",
