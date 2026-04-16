@@ -245,65 +245,22 @@ Classes I to IX
 
 <script>
 
-// (Your JS unchanged except final block)
-
 var now = new Date();
-var switch1 = new Date("April 9, 2026 12:00:00");
-var switch2 = new Date("April 10, 2026 12:00:00");
 
-var examDate = "09 April 2026 (Thursday)";
-var startTime = new Date("April 9, 2026 09:00:00").getTime();
-var endTime = new Date("April 9, 2026 12:00:00").getTime();
+var examDate = "17 April 2026 (Friday)";
+var startTime = new Date("April 17, 2026 09:00:00").getTime();
+var endTime = new Date("April 17, 2026 12:00:00").getTime();
 
-var primarySubject = "First Language (Telugu / Urdu etc.)";
+var primarySubject = "No Exam";
 var subjects = [
-    "Second Language (Hindi / Telugu etc.)",
-    "Second Language (Hindi / Telugu etc.)",
-    "Second Language (Hindi / Telugu etc.)",
-    "Second Language (Hindi / Telugu etc.)"
+    "Mathematics",
+    "Mathematics",
+    "Biological Science",
+    "Biological Science (Paper-II)"
 ];
 
-if(now >= switch1 && now < switch2){
-    examDate = "10 April 2026 (Friday)";
-    startTime = new Date("April 10, 2026 09:00:00").getTime();
-    endTime = new Date("April 10, 2026 12:00:00").getTime();
-    primarySubject = "English";
-    subjects = [
-        "Third Language (English)",
-        "Third Language (English)",
-        "Third Language (English)",
-        "Third Language (English)"
-    ];
-}
-else if(now >= switch2 && now < new Date("April 11, 2026 12:00:00")){
-    examDate = "11 April 2026 (Saturday)";
-    startTime = new Date("April 11, 2026 09:00:00").getTime();
-    endTime = new Date("April 11, 2026 12:00:00").getTime();
-    primarySubject = "Mathematics";
-    subjects = [
-        "Social Studies",
-        "Social Studies",
-        "Mathematics",
-        "Mathematics"
-    ];
-}
-else if(now >= new Date("April 11, 2026 12:00:00")){
-    examDate = "17 April 2026 (Friday)";
-    startTime = new Date("April 17, 2026 09:00:00").getTime();
-    endTime = new Date("April 17, 2026 12:00:00").getTime();
-    primarySubject = "No Exam";
-    subjects = [
-        "Mathematics",
-        "Mathematics",
-        "Biological Science",
-        "Biological Science (Paper-II)"
-    ];
-}
-
-var label = "Today's SA2 Exam :";
-if(now >= new Date("April 11, 2026 12:00:00")){
-    label = "Today's SA2 Exam :";
-}
+// ✅ Always Today's Exam
+var label = "Today's Exam :";
 
 document.getElementById("examDateText").innerHTML =
 label + "<br>" + examDate;
