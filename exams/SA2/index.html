@@ -124,12 +124,17 @@ body{
 .blue-card{ background:#0b3d91; }
 
 /* TABLE */
+.table-scroll{
+    overflow-x:auto;
+}
+
 .card table{
     background:#fff;
     color:#000;
     width:92%;
     margin:5px auto;
     border-collapse:collapse;
+    min-width:600px; /* ensures scroll appears */
 }
 
 th, td{
@@ -155,9 +160,8 @@ td{
 @media(max-width:600px){
     .main-title{ font-size:26px; }
     .row{ flex-direction:column; }
-    table{ width:100%; }
 
-    /* ✅ ONLY CHANGE — keep timings in single line */
+    /* keep timings in one line */
     td{
         white-space: nowrap;
     }
@@ -210,6 +214,7 @@ Classes I to IX
 <span>📘 CLASSES : I TO V</span>
 </div>
 
+<div class="table-scroll">
 <table>
 <tr><th>Class</th><th>Subject</th><th>Time</th></tr>
 <tr class="highlight">
@@ -220,12 +225,15 @@ Classes I to IX
 </table>
 </div>
 
+</div>
+
 <!-- HIGH SCHOOL -->
 <div class="card blue-card">
 <div class="section-marquee">
 <span>📗 CLASSES : VI TO IX</span>
 </div>
 
+<div class="table-scroll">
 <table>
 <tr><th>Class</th><th>Subject</th><th>Time</th></tr>
 
@@ -235,6 +243,8 @@ Classes I to IX
 <tr class="highlight"><td>IX</td><td id="sub9"></td><td>9.00 AM to 10.30 AM</td></tr>
 
 </table>
+</div>
+
 </div>
 
 <!-- 🔙 BACK BUTTON -->
@@ -283,12 +293,11 @@ var box = document.getElementById("countdown");
 if(current < startTime){
     var distance = startTime - current;
 
-    var days = Math.floor(distance/(1000*60*60*24));
     var h = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
     var m = Math.floor((distance%(1000*60*60))/(1000*60));
     var s = Math.floor((distance%(1000*60))/1000);
 
-    box.innerHTML = "⏳ Exam Starts in: " + days+"d "+h+"h "+m+"m "+s+"s";
+    box.innerHTML = "⏳ Exam Starts in: "+h+"h "+m+"m "+s+"s";
 }
 else if(current >= startTime && current <= endTime){
     box.innerHTML = "🟢 Exam is Going On";
