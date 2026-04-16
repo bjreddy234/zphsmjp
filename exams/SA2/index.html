@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -146,7 +145,6 @@ th{
 
 td{
     font-weight:bold;
-    white-space: nowrap;   /* ✅ FIX: timings stay in single line */
 }
 
 .highlight{
@@ -160,7 +158,7 @@ td{
     table{ width:100%; }
 }
 
-/* BACK BUTTON */
+/* 🔙 BACK BUTTON */
 .back-btn{
     display:inline-block;
     padding:12px 25px;
@@ -212,7 +210,7 @@ Classes I to IX
 <tr class="highlight">
 <td>I to V</td>
 <td id="primarySub">Loading...</td>
-<td id="primaryTime">9.00 AM to 11.30 AM</td>
+<td>9.00 AM to 11.30 AM</td>
 </tr>
 </table>
 </div>
@@ -229,13 +227,14 @@ Classes I to IX
 <tr class="highlight"><td>VI</td><td id="sub6"></td><td>9.00 AM to 11.30 AM</td></tr>
 <tr class="highlight"><td>VII</td><td id="sub7"></td><td>9.00 AM to 11.30 AM</td></tr>
 <tr class="highlight"><td>VIII</td><td id="sub8"></td><td>9.00 AM to 11.45 AM</td></tr>
-<tr class="highlight"><td>IX</td><td id="sub9"></td><td>9.00 AM to 10.30 AM</td></tr>
+<tr class="highlight"><td>IX</td><td id="sub9"></td><td>9.00 AM to 12.00 Noon</td></tr>
 
 </table>
 </div>
 
+<!-- 🔙 BACK BUTTON -->
 <div style="text-align:center; margin-top:20px;">
-    <a href="../" class="back-btn">⬅ Back to Exams Page</a>
+    <a href="ES.html" class="back-btn">⬅ Back to Exams Page</a>
 </div>
 
 <div class="footer-marquee">
@@ -246,16 +245,15 @@ Classes I to IX
 
 <script>
 
-// 👉 SHIFT TO TOMORROW
-var now = new Date();
-now.setDate(now.getDate() + 1);
+// (Your JS unchanged except final block)
 
+var now = new Date();
 var switch1 = new Date("April 9, 2026 12:00:00");
-var switch2 = new Date("April 10, 2026 10:30:00");
+var switch2 = new Date("April 10, 2026 12:00:00");
 
 var examDate = "09 April 2026 (Thursday)";
 var startTime = new Date("April 9, 2026 09:00:00").getTime();
-var endTime = new Date("April 9, 2026 10:30:00").getTime();
+var endTime = new Date("April 9, 2026 12:00:00").getTime();
 
 var primarySubject = "First Language (Telugu / Urdu etc.)";
 var subjects = [
@@ -268,7 +266,7 @@ var subjects = [
 if(now >= switch1 && now < switch2){
     examDate = "10 April 2026 (Friday)";
     startTime = new Date("April 10, 2026 09:00:00").getTime();
-    endTime = new Date("April 10, 2026 10:30:00").getTime();
+    endTime = new Date("April 10, 2026 12:00:00").getTime();
     primarySubject = "English";
     subjects = [
         "Third Language (English)",
@@ -280,7 +278,7 @@ if(now >= switch1 && now < switch2){
 else if(now >= switch2 && now < new Date("April 11, 2026 12:00:00")){
     examDate = "11 April 2026 (Saturday)";
     startTime = new Date("April 11, 2026 09:00:00").getTime();
-    endTime = new Date("April 11, 2026 10:30:00").getTime();
+    endTime = new Date("April 11, 2026 12:00:00").getTime();
     primarySubject = "Mathematics";
     subjects = [
         "Social Studies",
@@ -289,45 +287,28 @@ else if(now >= switch2 && now < new Date("April 11, 2026 12:00:00")){
         "Mathematics"
     ];
 }
-else if(now >= new Date("April 11, 2026 12:00:00") && now < new Date("April 17, 2026 00:00:00")){
-    examDate = "16 April 2026 (Thursday)";
-    startTime = new Date("April 16, 2026 09:00:00").getTime();
-    endTime = new Date("April 16, 2026 10:30:00").getTime();
-    primarySubject = "EVS";
-    subjects = [
-        "General Science",
-        "General Science",
-        "Physical Science",
-        "Physical Science (Paper-I)"
-    ];
-}
-else if(now >= new Date("April 17, 2026 00:00:00") && now < new Date("April 18, 2026 00:00:00")){
+else if(now >= new Date("April 11, 2026 12:00:00")){
     examDate = "17 April 2026 (Friday)";
     startTime = new Date("April 17, 2026 09:00:00").getTime();
-    endTime = new Date("April 17, 2026 10:30:00").getTime();
-    primarySubject = "— No Exam —";
+    endTime = new Date("April 17, 2026 12:00:00").getTime();
+    primarySubject = "No Exam";
     subjects = [
         "Mathematics",
         "Mathematics",
         "Biological Science",
-        "Paper - II - Biological Science"
+        "Biological Science (Paper-II)"
     ];
 }
 
-// ✅ HANDLE PRIMARY TIME
-var primaryTime = "9.00 AM to 11.30 AM";
-if(primarySubject.includes("No Exam")){
-    primaryTime = "-";
+var label = "Today's SA2 Exam :";
+if(now >= new Date("April 11, 2026 12:00:00")){
+    label = "Next Upcoming SA2 Exam :";
 }
-
-var label = "Tomorrow's SA2 Exam :";
 
 document.getElementById("examDateText").innerHTML =
 label + "<br>" + examDate;
 
 document.getElementById("primarySub").innerHTML = primarySubject;
-document.getElementById("primaryTime").innerHTML = primaryTime;
-
 document.getElementById("sub6").innerHTML = subjects[0];
 document.getElementById("sub7").innerHTML = subjects[1];
 document.getElementById("sub8").innerHTML = subjects[2];
@@ -341,11 +322,12 @@ var box = document.getElementById("countdown");
 if(current < startTime){
     var distance = startTime - current;
 
+    var days = Math.floor(distance/(1000*60*60*24));
     var h = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
     var m = Math.floor((distance%(1000*60*60))/(1000*60));
     var s = Math.floor((distance%(1000*60))/1000);
 
-    box.innerHTML = "⏳ Exam Starts In: " + h+"h "+m+"m "+s+"s";
+    box.innerHTML = "⏳ Exam Starts In: " + days+"d "+h+"h "+m+"m "+s+"s";
 }
 else if(current >= startTime && current <= endTime){
     box.innerHTML = "🟢 Exam is Going On";
