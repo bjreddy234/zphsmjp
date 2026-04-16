@@ -3,158 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SSC EXAM - 16 APRIL 2026</title>
+<title>SSC EXAMS COMPLETED</title>
 
 <style>
 
 body{
     margin:0;
     font-family: Arial, sans-serif;
-    background:#ffffff;
-    text-align:center;
-}
-
-/* HEADER */
-.marquee{
-    background:#000080;
-    color:#fff;
-    padding:15px;
-    font-size:22px;
-    font-weight:bold;
-    overflow:hidden;
-    position:relative;
-    height:60px;
+    background:#000;
     display:flex;
+    justify-content:center;
     align-items:center;
+    height:100vh;
 }
 
-.marquee span{
-    position:absolute;
-    white-space:nowrap;
-    animation: moveHeader 12s linear infinite;
-}
-
-@keyframes moveHeader{
-    0%{ transform: translateX(100%); }
-    100%{ transform: translateX(-100%); }
-}
-
-/* CARD */
-.card{
-    margin:20px auto;
-    max-width:800px;
-    background:#fff;
-    border-radius:10px;
-    box-shadow:0 0 15px rgba(0,0,0,0.2);
-    padding:20px;
-}
-
-/* TITLE (FIXED SINGLE LINE) */
-.title{
-    font-size:24px;
+/* BLINKING TEXT */
+.blink-text{
+    font-size:40px;
     font-weight:bold;
-    color:#000080;
-    white-space:nowrap;
-}
-
-/* MOBILE FIX */
-@media(max-width:600px){
-    .title{
-        font-size:18px;
-    }
-}
-
-.notice{
-    background:red;
     color:#fff;
-    padding:12px;
-    font-size:18px;
-    font-weight:bold;
-    border-radius:8px;
-    margin:15px 0;
+    text-align:center;
+    animation: blink 1s infinite;
 }
 
-/* TABLE */
-table{
-    width:100%;
-    border-collapse:collapse;
-}
-
-th{
-    background:#000080;
-    color:#fff;
-}
-
-td,th{
-    border:1px solid #999;
-    padding:10px;
-    font-weight:bold;
-}
-
-.timer{
-    margin:15px 0;
-    font-size:20px;
-    font-weight:bold;
-}
-
-/* BACK BUTTON */
-.back-btn{
-    display:inline-block;
-    padding:10px 20px;
-    background:#000080;
-    color:#fff;
-    text-decoration:none;
-    font-size:16px;
-    font-weight:bold;
-    border-radius:30px;
-    box-shadow:0 0 10px #000;
-    transition:0.3s;
-}
-
-.back-btn:hover{
-    background:#ff0000;
-    box-shadow:0 0 15px red, 0 0 25px yellow;
-}
-
-/* FINAL SCREEN */
-.final-marquee{
-    display:none;
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-
-    background: linear-gradient(270deg, #ff6a00, #ff00cc, #00c9ff, #92fe9d);
-    background-size: 800% 800%;
-    animation: gradientMove 12s ease infinite;
-
-    overflow:hidden;
-}
-
-@keyframes gradientMove{
-    0%{ background-position:0% 50%; }
-    50%{ background-position:100% 50%; }
-    100%{ background-position:0% 50%; }
-}
-
-/* FINAL TEXT */
-.final-marquee span{
-    position:absolute;
-    top:50%;
-    transform:translateY(-50%);
-    white-space:nowrap;
-
-    font-size:32px;
-    font-weight:bold;
-    color:#000;
-
-    animation: finalMove 12s linear infinite;
-}
-
-@keyframes finalMove{
-    0%{ transform: translate(100%, -50%); }
-    100%{ transform: translate(-100%, -50%); }
+/* BLINK ANIMATION */
+@keyframes blink{
+    0%{ opacity:1; color:#00ffcc; }
+    50%{ opacity:0; color:#ff0000; }
+    100%{ opacity:1; color:#ffff00; }
 }
 
 </style>
@@ -162,106 +38,9 @@ td,th{
 
 <body>
 
-<!-- HEADER -->
-<div class="marquee">
-    <span>📘 SSC PUBLIC EXAMINATIONS – MARCH 2026 (TELANGANA)</span>
+<div class="blink-text">
+    🎉 Congratulations on successful completion of SSC Exams 🎉
 </div>
-
-<!-- MAIN CONTENT -->
-<div id="mainContent">
-
-<div class="card">
-
-<div class="title">
-📅 EXAM ON: 16 APRIL 2026 (THURSDAY)
-</div>
-
-<div class="notice">
-📢 The examination will be conducted strictly as per the prescribed timetable.
-</div>
-
-<div class="timer" id="countdown"></div>
-
-<table>
-<tr>
-<th>Date</th>
-<th>Subject</th>
-<th>Paper Code</th>
-<th>Time</th>
-</tr>
-
-<tr>
-<td>16-04-2026</td>
-<td>OSSC Main Language Paper-II</td>
-<td>Sanskrit & Arabic (24 & 26)</td>
-<td>9:30 AM to 12:30 PM</td>
-</tr>
-
-</table>
-
-<!-- BACK BUTTON -->
-<div style="margin-top:20px;">
-    <a href="../" class="back-btn">⬅ Back to Exams Page</a>
-</div>
-
-</div>
-
-</div>
-
-<!-- FINAL SCREEN -->
-<div id="finalScreen" class="final-marquee">
-    <span>
-        Congratulations on successful completion of SSC Exmas.
-    </span>
-</div>
-
-<script>
-
-/* TIME SETTINGS */
-var startTime = new Date(2026, 3, 16, 9, 30, 0).getTime();
-var endTime   = new Date(2026, 3, 16, 12, 30, 0).getTime();
-
-setInterval(function(){
-
-    var now = new Date().getTime();
-
-    var main = document.getElementById("mainContent");
-    var header = document.querySelector(".marquee");
-    var final = document.getElementById("finalScreen");
-    var box = document.getElementById("countdown");
-
-    if(now < startTime){
-
-        var d = startTime - now;
-
-        var h = Math.floor((d % (1000*60*60*24)) / (1000*60*60));
-        var m = Math.floor((d % (1000*60*60)) / (1000*60));
-        var s = Math.floor((d % (1000*60)) / 1000);
-
-        box.innerHTML = "⏳ Exam starts in: " + h + "h " + m + "m " + s + "s";
-    }
-
-    else if(now >= startTime && now < endTime){
-
-        var d = endTime - now;
-
-        var h = Math.floor((d % (1000*60*60*24)) / (1000*60*60));
-        var m = Math.floor((d % (1000*60*60)) / (1000*60));
-        var s = Math.floor((d % (1000*60)) / 1000);
-
-        box.innerHTML = "🟢 Exam is going on | Ends in: " + h + "h " + m + "m " + s + "s";
-    }
-
-    else{
-
-        main.style.display = "none";
-        header.style.display = "none";
-        final.style.display = "block";
-    }
-
-},1000);
-
-</script>
 
 </body>
 </html>
