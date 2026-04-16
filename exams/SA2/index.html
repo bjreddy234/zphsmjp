@@ -284,7 +284,7 @@ if(current < startTime){
     var m = Math.floor((distance%(1000*60*60))/(1000*60));
     var s = Math.floor((distance%(1000*60))/1000);
 
-    box.innerHTML = "⏳ Exam Starts In: " + days+"d "+h+"h "+m+"m "+s+"s";
+    box.innerHTML = "⏳ Exam Starts in: " + days+"d "+h+"h "+m+"m "+s+"s";
 }
 else if(current >= startTime && current <= endTime){
     box.innerHTML = "🟢 Exam is Going On";
