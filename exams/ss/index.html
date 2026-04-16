@@ -12,6 +12,73 @@ body{
     font-family: Arial, sans-serif;
     background:#000;
     display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+/* BLINKING TEXT */
+.blink-text{
+    font-size:40px;
+    font-weight:bold;
+    color:#fff;
+    text-align:center;
+    animation: blink 1s infinite;
+    margin-bottom:30px;
+}
+
+/* BLINK ANIMATION */
+@keyframes blink{
+    0%{ opacity:1; color:#00ffcc; }
+    50%{ opacity:0; color:#ff0000; }
+    100%{ opacity:1; color:#ffff00; }
+}
+
+/* BACK BUTTON */
+.back-btn{
+    padding:12px 25px;
+    background:#000080;
+    color:#fff;
+    text-decoration:none;
+    font-size:18px;
+    font-weight:bold;
+    border-radius:30px;
+    box-shadow:0 0 10px #000;
+    transition:0.3s;
+}
+
+.back-btn:hover{
+    background:#ff0000;
+    box-shadow:0 0 15px red, 0 0 25px yellow;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="blink-text">
+    🎉 Congratulations on successful completion of SSC Exams 🎉
+</div>
+
+<a href="../" class="back-btn">⬅ Back to Exams Page</a>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SSC EXAMS COMPLETED</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background:#000;
+    display:flex;
     justify-content:center;
     align-items:center;
     height:100vh;
