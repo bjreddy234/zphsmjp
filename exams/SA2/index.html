@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -273,7 +272,21 @@ var subjects = [
     "Social Studies"
 ];
 
-var label = "Tomorrow's Exam :";
+// ✅ AUTO LABEL CHANGE LOGIC
+var today = new Date();
+var examDay = new Date("April 18, 2026");
+
+var label;
+
+if(
+    today.getDate() === examDay.getDate() &&
+    today.getMonth() === examDay.getMonth() &&
+    today.getFullYear() === examDay.getFullYear()
+){
+    label = "Today's Exam :";
+} else {
+    label = "Tomorrow's Exam :";
+}
 
 document.getElementById("examDateText").innerHTML =
 label + "<br>" + examDate;
