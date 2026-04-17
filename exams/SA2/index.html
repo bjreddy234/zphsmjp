@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -134,7 +135,7 @@ body{
     width:92%;
     margin:5px auto;
     border-collapse:collapse;
-    min-width:600px; /* ensures scroll appears */
+    min-width:600px;
 }
 
 th, td{
@@ -161,7 +162,6 @@ td{
     .main-title{ font-size:26px; }
     .row{ flex-direction:column; }
 
-    /* keep timings in one line */
     td{
         white-space: nowrap;
     }
@@ -220,7 +220,7 @@ Classes I to IX
 <tr class="highlight">
 <td>I to V</td>
 <td id="primarySub">Loading...</td>
-<td> ---- </td>
+<td> --- </td>
 </tr>
 </table>
 </div>
@@ -237,17 +237,16 @@ Classes I to IX
 <table>
 <tr><th>Class</th><th>Subject</th><th>Time</th></tr>
 
-<tr class="highlight"><td>VI</td><td id="sub6"></td><td>9.00 AM to 11.30 AM</td></tr>
-<tr class="highlight"><td>VII</td><td id="sub7"></td><td>9.00 AM to 11.30 AM</td></tr>
-<tr class="highlight"><td>VIII</td><td id="sub8"></td><td>9.00 AM to 11.45 AM</td></tr>
-<tr class="highlight"><td>IX</td><td id="sub9"></td><td>9.00 AM to 10.30 AM</td></tr>
+<tr class="highlight"><td>VI</td><td id="sub6"></td><td id="time6">9.00 AM to 11.30 AM</td></tr>
+<tr class="highlight"><td>VII</td><td id="sub7"></td><td id="time7">9.00 AM to 11.30 AM</td></tr>
+<tr class="highlight"><td>VIII</td><td id="sub8"></td><td id="time8">9.00 AM to 11.45 AM</td></tr>
+<tr class="highlight"><td>IX</td><td id="sub9"></td><td id="time9">9.00 AM to 10.30 AM</td></tr>
 
 </table>
 </div>
 
 </div>
 
-<!-- 🔙 BACK BUTTON -->
 <div style="text-align:center; margin-top:20px;">
     <a href="../" class="back-btn">⬅ Back to Exams Page</a>
 </div>
@@ -262,19 +261,19 @@ Classes I to IX
 
 var now = new Date();
 
-var examDate = "17 April 2026 (Friday)";
-var startTime = new Date("April 17, 2026 09:00:00").getTime();
-var endTime = new Date("April 17, 2026 12:00:00").getTime();
+var examDate = "18 April 2026 (Saturday)";
+var startTime = new Date("April 18, 2026 09:00:00").getTime();
+var endTime = new Date("April 18, 2026 12:00:00").getTime();
 
 var primarySubject = "No Exam";
 var subjects = [
-    "Mathematics",
-    "Mathematics",
-    "Biological Science",
-    "Paper - II : Biological Science "
+    "No Exam",
+    "No Exam",
+    "Social Studies",
+    "Social Studies"
 ];
 
-var label = "Today's Exam :";
+var label = "Tomorrow's Exam :";
 
 document.getElementById("examDateText").innerHTML =
 label + "<br>" + examDate;
@@ -284,6 +283,20 @@ document.getElementById("sub6").innerHTML = subjects[0];
 document.getElementById("sub7").innerHTML = subjects[1];
 document.getElementById("sub8").innerHTML = subjects[2];
 document.getElementById("sub9").innerHTML = subjects[3];
+
+// 🔥 HANDLE NO EXAM TIMINGS
+if(subjects[0] === "No Exam"){
+    document.getElementById("time6").innerHTML = " --- ";
+}
+if(subjects[1] === "No Exam"){
+    document.getElementById("time7").innerHTML = " --- ";
+}
+if(subjects[2] === "No Exam"){
+    document.getElementById("time8").innerHTML = " --- ";
+}
+if(subjects[3] === "No Exam"){
+    document.getElementById("time9").innerHTML = " --- ";
+}
 
 setInterval(function(){
 
