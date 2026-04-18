@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,101 +22,66 @@ body{
     width:100%;
     background:#ffcc00;
     color:#000;
-    padding:14px;
+    padding:12px;
     font-weight:bold;
-    font-size:28px;
+    font-size:20px;
     overflow:hidden;
     white-space:nowrap;
 }
 .marquee span{
     display:inline-block;
     padding-left:100%;
-    animation: scroll 15s linear infinite;
-}
-@keyframes scroll{
-    0%{ transform: translateX(0); }
-    100%{ transform: translateX(-100%); }
+    animation: scroll 20s linear infinite;
 }
 
-/* CENTER CONTENT */
+/* CENTER */
 .container{
     position:absolute;
     top:50%;
     left:50%;
     transform:translate(-50%,-50%);
     text-align:center;
+    width:90%;
 }
 
-/* ✅ IMPROVED BLINK + GLOW */
+/* TEXT */
 .blink{
-    font-size:48px;
+    font-size:34px;
     font-weight:900;
     color:#ffffff;
-
-    text-shadow:
-        0 0 10px #ffffff,
-        0 0 20px #00ffff,
-        0 0 40px #00ffff,
-        0 0 60px #00ffff;
-
-    animation: blinkClear 1.2s infinite, glowShift 2s infinite alternate;
+    text-shadow:0 0 10px #fff,0 0 20px #00ffff,0 0 40px #00ffff;
+    animation: blinkClear 1.5s infinite;
 }
 
 @keyframes blinkClear{
-    0%,100%{ opacity:1; }
-    50%{ opacity:0.2; }
+    0%,100%{opacity:1;}
+    50%{opacity:0.3;}
 }
 
-@keyframes glowShift{
-    0%{
-        text-shadow:
-            0 0 10px #ffffff,
-            0 0 20px #00ffff,
-            0 0 40px #00ffff,
-            0 0 60px #00ffff;
-    }
-    100%{
-        text-shadow:
-            0 0 10px #ffffff,
-            0 0 20px #ffcc00,
-            0 0 40px #ffcc00,
-            0 0 60px #ffcc00;
-    }
-}
-
-/* BACK BUTTON (UNCHANGED) */
+/* BUTTON */
 .back-btn{
     display:inline-block;
-    margin-top:30px;
-    padding:12px 25px;
+    margin-top:25px;
+    padding:10px 20px;
     background:#ffcc00;
     color:#000;
     text-decoration:none;
-    font-size:18px;
+    font-size:16px;
     font-weight:bold;
     border-radius:30px;
-    box-shadow:0 0 10px #000;
-    transition:0.3s;
 }
 
-.back-btn:hover{
-    background:#ff0000;
-    color:#fff;
-    box-shadow:0 0 15px red, 0 0 25px yellow;
-}
-
-/* CONFETTI */
+/* CONFETTI (LIGHT VERSION) */
 .confetti{
     position:absolute;
-    width:10px;
-    height:10px;
+    width:6px;
+    height:6px;
     top:-10px;
     animation: fall linear infinite;
 }
+
 @keyframes fall{
-    to{
-        transform: translateY(100vh) rotate(720deg);
-    }
+    to{ transform: translateY(100vh) rotate(360deg); }
 }
 
 /* FIREWORK CANVAS */
@@ -126,6 +90,19 @@ canvas{
     top:0;
     left:0;
     pointer-events:none;
+}
+
+/* 📱 MOBILE OPTIMIZATION */
+@media(max-width:600px){
+
+    .blink{
+        font-size:26px;
+    }
+
+    canvas{
+        display:none; /* 🔥 disable fireworks on mobile */
+    }
+
 }
 
 </style>
@@ -152,22 +129,26 @@ canvas{
 
 <script>
 
-/* 🔊 SOUND */
+/* 🔊 SOUND (safe play) */
 window.onload = function(){
     document.getElementById("sound").play().catch(()=>{});
 };
 
-/* 🎉 CONFETTI */
-for(let i=0;i<80;i++){
+/* 🎉 CONFETTI (REDUCED) */
+let confettiCount = window.innerWidth < 600 ? 30 : 60;
+
+for(let i=0;i<confettiCount;i++){
     let c=document.createElement("div");
     c.className="confetti";
     c.style.left=Math.random()*100+"vw";
     c.style.backgroundColor=`hsl(${Math.random()*360},100%,50%)`;
-    c.style.animationDuration=(2+Math.random()*3)+"s";
+    c.style.animationDuration=(3+Math.random()*3)+"s";
     document.body.appendChild(c);
 }
 
-/* 🎆 FIREWORKS */
+/* 🎆 FIREWORKS (ONLY DESKTOP) */
+if(window.innerWidth > 600){
+
 const canvas=document.getElementById("fireworks");
 const ctx=canvas.getContext("2d");
 
@@ -179,13 +160,13 @@ let particles=[];
 function createFirework(){
     let x=Math.random()*canvas.width;
     let y=Math.random()*canvas.height/2;
-    for(let i=0;i<50;i++){
+    for(let i=0;i<25;i++){  // reduced particles
         particles.push({
             x:x,
             y:y,
             angle:Math.random()*2*Math.PI,
-            speed:Math.random()*5+2,
-            life:100
+            speed:Math.random()*3+1,
+            life:80
         });
     }
 }
@@ -200,7 +181,7 @@ function animate(){
         p.life--;
 
         ctx.fillStyle="hsl("+Math.random()*360+",100%,50%)";
-        ctx.fillRect(p.x,p.y,3,3);
+        ctx.fillRect(p.x,p.y,2,2);
 
         if(p.life<=0) particles.splice(i,1);
     });
@@ -208,8 +189,10 @@ function animate(){
     requestAnimationFrame(animate);
 }
 
-setInterval(createFirework,800);
+setInterval(createFirework,1200); // slower
 animate();
+
+}
 
 </script>
 
