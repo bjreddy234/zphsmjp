@@ -98,20 +98,26 @@ body {
     100% { transform: translateX(-100%); }
 }
 
-/* TABLE */
+/* TABLE CONTAINER */
 .table-container {
     overflow-x: auto;
     background: #fff;
     padding: 10px;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    position: relative; /* IMPORTANT */
 }
 
 table {
     width: 100%;
-    border-collapse: collapse;
     min-width: 700px;
     border: 3px solid #2c3e50;
+}
+
+/* IMPORTANT FOR STICKY */
+table {
+    border-collapse: separate;
+    border-spacing: 0;
 }
 
 th, td {
@@ -128,17 +134,21 @@ th {
     border-bottom: 3px solid #000;
 }
 
-/* FREEZE CLASS COLUMN */
+/* ✅ FREEZE CLASS COLUMN (WORKS ON MOBILE) */
 td:first-child, th:first-child {
     position: sticky;
     left: 0;
     background: #f4f6f7;
-    z-index: 2;
+    z-index: 5;
+    min-width: 90px;
     box-shadow: 2px 0 5px rgba(0,0,0,0.2);
 }
 
+/* HEADER FIRST COLUMN */
 th:first-child {
-    z-index: 3;
+    background: #2c3e50;
+    color: white;
+    z-index: 6;
 }
 
 /* STATUS COLORS */
@@ -174,6 +184,10 @@ th:first-child {
 
     .message-bar span {
         font-size: 14px;
+    }
+
+    table {
+        border-collapse: separate; /* KEY FIX */
     }
 }
 </style>
