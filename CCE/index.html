@@ -100,12 +100,25 @@ body {
 /* TABLE CONTAINER */
 .table-container {
     overflow-x: auto;
-    overflow-y: hidden; /* FIX */
+    overflow-y: hidden;
     background: #fff;
     padding: 10px;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     position: relative;
+}
+
+/* 🔥 MASK LAYER (fixes mobile overlap completely) */
+.table-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 110px;
+    height: 100%;
+    background: #fff;
+    z-index: 4;
+    pointer-events: none;
 }
 
 /* TABLE */
@@ -114,7 +127,6 @@ table {
     min-width: 700px;
     border: 3px solid #2c3e50;
 
-    /* IMPORTANT */
     border-collapse: separate;
     border-spacing: 0;
 }
@@ -132,24 +144,21 @@ th {
     color: white;
 }
 
-/* ✅ PERFECT FREEZE (NO BLEEDING) */
+/* ✅ STICKY COLUMN */
 td:first-child, th:first-child {
     position: sticky;
     left: 0;
-    min-width: 90px;
-
+    min-width: 100px;
     background: #f4f6f7;
-    background-clip: padding-box;
-
-    z-index: 10;
-
+    z-index: 6;
     box-shadow: 6px 0 8px rgba(0,0,0,0.25);
 }
 
+/* HEADER FIRST COLUMN */
 th:first-child {
     background: #2c3e50;
     color: #fff;
-    z-index: 11;
+    z-index: 7;
 }
 
 /* STATUS COLORS */
