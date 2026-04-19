@@ -1,44 +1,331 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>About - ZPHS Mujahidpur</title>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SA2 Marks Submission Status</title>
+
 <style>
 body {
-    margin:0;
-    font-family: Arial;
-    text-align:center;
-    background:#f5f7fa;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
 }
-header {
-    background:#002b5c;
-    color:white;
-    padding:15px;
+
+.container {
+    padding: 15px;
+    max-width: 1000px;
+    margin: auto;
 }
-.content {
-    padding:50px;
+
+/* HEADER */
+.header {
+    background: linear-gradient(270deg, #ff512f, #dd2476, #1e90ff);
+    background-size: 400% 400%;
+    animation: gradientMove 8s ease infinite;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    color: white;
+    text-align: center;
+    overflow: hidden;
 }
-a {
-    padding:10px 20px;
-    background:#0b3d6d;
-    color:white;
-    text-decoration:none;
-    border-radius:6px;
+
+@keyframes gradientMove {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+/* MARQUEE TITLE */
+.marquee {
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+}
+
+.marquee span {
+    display: inline-block;
+    padding-left: 100%;
+    font-size: 30px;
+    font-weight: bold;
+    animation: marqueeMove 12s linear infinite;
+}
+
+@keyframes marqueeMove {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+/* BLINK DATE */
+.blink {
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 15px;
+    animation: blinkAnim 1s infinite;
+}
+
+@keyframes blinkAnim {
+    0% {opacity: 1;}
+    50% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+/* MESSAGE BAR - BRINJAL */
+.message-bar {
+    background: #4b0082;
+    color: #fff;
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+    border: 2px solid #2c003e;
+}
+
+.message-bar span {
+    display: inline-block;
+    padding-left: 100%;
+    white-space: nowrap;
+    font-size: 18px;
+    font-weight: bold;
+    animation: scrollMsg 18s linear infinite;
+}
+
+@keyframes scrollMsg {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+/* TABLE */
+.table-container {
+    overflow-x: auto;
+    background: #fff;
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 700px;
+    border: 3px solid #2c3e50;
+}
+
+th, td {
+    border: 1.5px solid #2c3e50;
+    padding: 10px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+th {
+    background: #2c3e50;
+    color: white;
+    border-bottom: 3px solid #000;
+}
+
+td:first-child {
+    background: #f4f6f7;
+}
+
+/* STATUS COLORS */
+.tick {
+    background: #2ecc71;
+    color: white;
+}
+
+.cross {
+    background: #e74c3c;
+    color: white;
+}
+
+.neutral {
+    background: #ecf0f1;
+    color: #555;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    th, td {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .marquee span {
+        font-size: 18px;
+    }
+
+    .blink {
+        font-size: 20px;
+    }
+
+    .message-bar span {
+        font-size: 14px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<header>
-<h2>ZPHS MUJAHIDPUR</h2>
-</header>
+<div class="container">
 
-<div class="content">
-<h1>About Page</h1>
-<p>Details about the school will be updated soon.</p>
+<!-- HEADER -->
+<div class="header">
+    <div class="marquee">
+        <span>ZPHS MUJAHIDPUR — SA2 MARKS SUBMISSION STATUS</span>
+    </div>
 
-<a href="/">⬅ Back to Home</a>
+    <div class="blink">
+        As on 18.04.2026
+    </div>
+</div>
+
+<!-- MESSAGE BAR -->
+<div class="message-bar">
+    <span>
+        Thank you all the subject teachers who handed over their subjects marks lists.
+        The remaining subject teachers are requested to submit the lists before 12.00 pm tomorrow.
+    </span>
+</div>
+
+<!-- TABLE -->
+<div class="table-container">
+<table>
+
+<thead>
+<tr>
+    <th>Class</th>
+    <th>TEL</th>
+    <th>HIN</th>
+    <th>ENG</th>
+    <th>MATH</th>
+    <th>GEN SCI</th>
+    <th>PHY SCI</th>
+    <th>BIO SCI</th>
+    <th>SOCIAL</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>VI A</td>
+<td class="tick">✔</td>
+<td class="tick">✔</td>
+<td class="tick">✔</td>
+<td class="tick">✔</td>
+<td class="cross">✖</td>
+<td class="neutral">-</td>
+<td class="neutral">-</td>
+<td class="tick">✔</td>
+</tr>
+
+<tr>
+<td>VI B</td>
+<td class="cross">✖</td>
+<td class="tick">✔</td>
+<td class="tick">✔</td>
+<td class="cross">✖</td>
+<td class="tick">✔</td>
+<td class="neutral">-</td>
+<td class="neutral">-</td>
+<td class="tick">✔</td>
+</tr>
+
+<tr>
+<td>VII A</td>
+<td class="cross">✖</td>
+<td class="tick">✔</td>
+<td class="tick">✔</td>
+<td class="tick">✔</td>
+<td class="cross">✖</td>
+<td class="neutral">-</td>
+<td class="neutral">-</td>
+<td class="cross">✖</td>
+</tr>
+
+<tr>
+<td>VII B</td>
+<td class="tick">✔</td>
+<td class="tick">✔</td>
+<td class="tick">✔</td>
+<td class="cross">✖</td>
+<td class="cross">✖</td>
+<td class="neutral">-</td>
+<td class="neutral">-</td>
+<td class="tick">✔</td>
+</tr>
+
+<tr>
+<td>VIII A</td>
+<td class="tick">✔</td>
+<td class="tick">✔</td>
+<td class="tick">✔</td>
+<td class="tick">✔</td>
+<td class="neutral">-</td>
+<td class="cross">✖</td>
+<td class="cross">✖</td>
+<td class="cross">✖</td>
+</tr>
+
+<tr>
+<td>VIII B</td>
+<td class="cross">✖</td>
+<td class="tick">✔</td>
+<td class="tick">✔</td>
+<td class="cross">✖</td>
+<td class="neutral">-</td>
+<td class="cross">✖</td>
+<td class="cross">✖</td>
+<td class="cross">✖</td>
+</tr>
+
+<tr>
+<td>IX A</td>
+<td class="tick">✔</td>
+<td class="tick">✔</td>
+<td class="tick">✔</td>
+<td class="cross">✖</td>
+<td class="neutral">-</td>
+<td class="cross">✖</td>
+<td class="cross">✖</td>
+<td class="cross">✖</td>
+</tr>
+
+<tr>
+<td>IX B</td>
+<td class="cross">✖</td>
+<td class="tick">✔</td>
+<td class="tick">✔</td>
+<td class="tick">✔</td>
+<td class="neutral">-</td>
+<td class="tick">✔</td>
+<td class="cross">✖</td>
+<td class="cross">✖</td>
+</tr>
+
+<tr>
+<td>IX C</td>
+<td class="cross">✖</td>
+<td class="tick">✔</td>
+<td class="tick">✔</td>
+<td class="cross">✖</td>
+<td class="neutral">-</td>
+<td class="cross">✖</td>
+<td class="cross">✖</td>
+<td class="cross">✖</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
 </div>
 
 </body>
