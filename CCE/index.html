@@ -42,7 +42,6 @@ body {
 .marquee {
     white-space: nowrap;
     overflow: hidden;
-    position: relative;
 }
 
 .marquee span {
@@ -101,21 +100,21 @@ body {
 /* TABLE CONTAINER */
 .table-container {
     overflow-x: auto;
+    overflow-y: hidden; /* FIX */
     background: #fff;
     padding: 10px;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    position: relative; /* IMPORTANT */
+    position: relative;
 }
 
+/* TABLE */
 table {
     width: 100%;
     min-width: 700px;
     border: 3px solid #2c3e50;
-}
 
-/* IMPORTANT FOR STICKY */
-table {
+    /* IMPORTANT */
     border-collapse: separate;
     border-spacing: 0;
 }
@@ -131,24 +130,26 @@ th, td {
 th {
     background: #2c3e50;
     color: white;
-    border-bottom: 3px solid #000;
 }
 
-/* ✅ FREEZE CLASS COLUMN (WORKS ON MOBILE) */
+/* ✅ PERFECT FREEZE (NO BLEEDING) */
 td:first-child, th:first-child {
     position: sticky;
     left: 0;
-    background: #f4f6f7;
-    z-index: 5;
     min-width: 90px;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+
+    background: #f4f6f7;
+    background-clip: padding-box;
+
+    z-index: 10;
+
+    box-shadow: 6px 0 8px rgba(0,0,0,0.25);
 }
 
-/* HEADER FIRST COLUMN */
 th:first-child {
     background: #2c3e50;
-    color: white;
-    z-index: 6;
+    color: #fff;
+    z-index: 11;
 }
 
 /* STATUS COLORS */
@@ -184,10 +185,6 @@ th:first-child {
 
     .message-bar span {
         font-size: 14px;
-    }
-
-    table {
-        border-collapse: separate; /* KEY FIX */
     }
 }
 </style>
