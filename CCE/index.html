@@ -38,7 +38,7 @@ body {
     100% {background-position: 0% 50%;}
 }
 
-/* MARQUEE TITLE */
+/* MARQUEE */
 .marquee {
     white-space: nowrap;
     overflow: hidden;
@@ -72,7 +72,7 @@ body {
     100% {opacity: 1;}
 }
 
-/* MESSAGE BAR - BRINJAL */
+/* MESSAGE BAR */
 .message-bar {
     background: #4b0082;
     color: #fff;
@@ -128,8 +128,17 @@ th {
     border-bottom: 3px solid #000;
 }
 
-td:first-child {
+/* FREEZE CLASS COLUMN */
+td:first-child, th:first-child {
+    position: sticky;
+    left: 0;
     background: #f4f6f7;
+    z-index: 2;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+}
+
+th:first-child {
+    z-index: 3;
 }
 
 /* STATUS COLORS */
@@ -214,111 +223,39 @@ td:first-child {
 <tbody>
 
 <tr>
-<td>VI A</td>
-<td class="tick">✔</td>
-<td class="tick">✔</td>
-<td class="tick">✔</td>
-<td class="tick">✔</td>
-<td class="cross">✖</td>
-<td class="neutral">-</td>
-<td class="neutral">-</td>
-<td class="tick">✔</td>
+<td>VI A</td><td class="tick">✔</td><td class="tick">✔</td><td class="tick">✔</td><td class="tick">✔</td><td class="cross">✖</td><td class="neutral">-</td><td class="neutral">-</td><td class="tick">✔</td>
 </tr>
 
 <tr>
-<td>VI B</td>
-<td class="cross">✖</td>
-<td class="tick">✔</td>
-<td class="tick">✔</td>
-<td class="cross">✖</td>
-<td class="tick">✔</td>
-<td class="neutral">-</td>
-<td class="neutral">-</td>
-<td class="tick">✔</td>
+<td>VI B</td><td class="cross">✖</td><td class="tick">✔</td><td class="tick">✔</td><td class="cross">✖</td><td class="tick">✔</td><td class="neutral">-</td><td class="neutral">-</td><td class="tick">✔</td>
 </tr>
 
 <tr>
-<td>VII A</td>
-<td class="cross">✖</td>
-<td class="tick">✔</td>
-<td class="tick">✔</td>
-<td class="tick">✔</td>
-<td class="cross">✖</td>
-<td class="neutral">-</td>
-<td class="neutral">-</td>
-<td class="cross">✖</td>
+<td>VII A</td><td class="cross">✖</td><td class="tick">✔</td><td class="tick">✔</td><td class="tick">✔</td><td class="cross">✖</td><td class="neutral">-</td><td class="neutral">-</td><td class="cross">✖</td>
 </tr>
 
 <tr>
-<td>VII B</td>
-<td class="tick">✔</td>
-<td class="tick">✔</td>
-<td class="tick">✔</td>
-<td class="cross">✖</td>
-<td class="cross">✖</td>
-<td class="neutral">-</td>
-<td class="neutral">-</td>
-<td class="tick">✔</td>
+<td>VII B</td><td class="tick">✔</td><td class="tick">✔</td><td class="tick">✔</td><td class="cross">✖</td><td class="cross">✖</td><td class="neutral">-</td><td class="neutral">-</td><td class="tick">✔</td>
 </tr>
 
 <tr>
-<td>VIII A</td>
-<td class="tick">✔</td>
-<td class="tick">✔</td>
-<td class="tick">✔</td>
-<td class="tick">✔</td>
-<td class="neutral">-</td>
-<td class="cross">✖</td>
-<td class="cross">✖</td>
-<td class="cross">✖</td>
+<td>VIII A</td><td class="tick">✔</td><td class="tick">✔</td><td class="tick">✔</td><td class="tick">✔</td><td class="neutral">-</td><td class="cross">✖</td><td class="cross">✖</td><td class="cross">✖</td>
 </tr>
 
 <tr>
-<td>VIII B</td>
-<td class="cross">✖</td>
-<td class="tick">✔</td>
-<td class="tick">✔</td>
-<td class="cross">✖</td>
-<td class="neutral">-</td>
-<td class="cross">✖</td>
-<td class="cross">✖</td>
-<td class="cross">✖</td>
+<td>VIII B</td><td class="cross">✖</td><td class="tick">✔</td><td class="tick">✔</td><td class="cross">✖</td><td class="neutral">-</td><td class="cross">✖</td><td class="cross">✖</td><td class="cross">✖</td>
 </tr>
 
 <tr>
-<td>IX A</td>
-<td class="tick">✔</td>
-<td class="tick">✔</td>
-<td class="tick">✔</td>
-<td class="cross">✖</td>
-<td class="neutral">-</td>
-<td class="cross">✖</td>
-<td class="cross">✖</td>
-<td class="cross">✖</td>
+<td>IX A</td><td class="tick">✔</td><td class="tick">✔</td><td class="tick">✔</td><td class="cross">✖</td><td class="neutral">-</td><td class="cross">✖</td><td class="cross">✖</td><td class="cross">✖</td>
 </tr>
 
 <tr>
-<td>IX B</td>
-<td class="cross">✖</td>
-<td class="tick">✔</td>
-<td class="tick">✔</td>
-<td class="tick">✔</td>
-<td class="neutral">-</td>
-<td class="tick">✔</td>
-<td class="cross">✖</td>
-<td class="cross">✖</td>
+<td>IX B</td><td class="cross">✖</td><td class="tick">✔</td><td class="tick">✔</td><td class="tick">✔</td><td class="neutral">-</td><td class="tick">✔</td><td class="cross">✖</td><td class="cross">✖</td>
 </tr>
 
 <tr>
-<td>IX C</td>
-<td class="cross">✖</td>
-<td class="tick">✔</td>
-<td class="tick">✔</td>
-<td class="cross">✖</td>
-<td class="neutral">-</td>
-<td class="cross">✖</td>
-<td class="cross">✖</td>
-<td class="cross">✖</td>
+<td>IX C</td><td class="cross">✖</td><td class="tick">✔</td><td class="tick">✔</td><td class="cross">✖</td><td class="neutral">-</td><td class="cross">✖</td><td class="cross">✖</td><td class="cross">✖</td>
 </tr>
 
 </tbody>
